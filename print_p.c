@@ -6,15 +6,14 @@
 /*   By: asimoes <asimoes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 07:41:21 by asimoes           #+#    #+#             */
-/*   Updated: 2020/06/18 20:09:41 by asimoes          ###   ########.fr       */
+/*   Updated: 2020/06/21 12:06:49 by asimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./libft/libft.h"
 #include "ft_printf.h"
 
-int	print_p(va_list args, t_specifier *specifier)
+void	print_p(va_list args, t_specifier *specifier, int *count)
 {
 	
-	return (0);
 }

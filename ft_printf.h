@@ -6,7 +6,7 @@
 /*   By: asimoes <asimoes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/03 11:35:07 by asimoes           #+#    #+#             */
-/*   Updated: 2020/06/19 17:46:48 by asimoes          ###   ########.fr       */
+/*   Updated: 2020/06/21 12:00:39 by asimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,11 @@
 
 # define ft_putchar(x)	ft_putchar_fd(x, 1)
 
-# define LENGTH_HH	1
-# define LENGTH_H	2
-# define LENGTH_L	3
-# define LENGTH_LL	4
-# define LENGTH_J	5
-# define LENGTH_Z	6
-# define LENGTH_T	7
-# define LENGTH_L	8
-
+# define FLAG_MINUS	1
+# define FLAG_PLUS	2
+# define FLAG_SPACE	4
+# define FLAG_OCTO	8
+# define FLAG_ZERO	16
 
 typedef struct	s_specifier {
 	short int	flags;
@@ -41,14 +37,17 @@ typedef struct	s_specifier {
 	char		specifier;
 }				t_specifier;
 
+char	*pad_left(char c, int n, char *data);
+char	*pad_right(char c, int n, char *data);
+
 int		ft_printf(const char *format, ...);
 int		parse_specifier(const char **format, va_list args, t_specifier **specifier);
-int		print_c(va_list args, t_specifier *specifier);
-int		print_s(va_list args, t_specifier *specifier);
-int		print_d(va_list args, t_specifier *specifier);
-int		print_p(va_list args, t_specifier *specifier);
-int		print_u(va_list args, t_specifier *specifier);
-int		print_x(va_list args, t_specifier *specifier);
+void	print_c(va_list args, t_specifier *specifier, int *count);
+void	print_s(va_list args, t_specifier *specifier, int *count);
+void	print_d(va_list args, t_specifier *specifier, int *count);
+void	print_p(va_list args, t_specifier *specifier, int *count);
+void	print_u(va_list args, t_specifier *specifier, int *count);
+void	print_x(va_list args, t_specifier *specifier, int *count);
 void	call_spec_func(va_list args, t_specifier *specifier, int *count);
 void	spec_handler(const char **format, va_list args, int *count);
 

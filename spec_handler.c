@@ -6,7 +6,7 @@
 /*   By: asimoes <asimoes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/03 11:48:05 by asimoes           #+#    #+#             */
-/*   Updated: 2020/06/19 17:46:05 by asimoes          ###   ########.fr       */
+/*   Updated: 2020/06/21 12:04:52 by asimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,15 +41,15 @@ void	spec_handler(const char **format, va_list args, int *count)
 	while (**format == '-' || **format == '+' || **format == ' ' || **format == '#' || **format == '0')
 	{
 		if (**format == '-')
-			specifier->flags ^= 1;
+			specifier->flags ^= FLAG_MINUS;
 		if (**format == '+')
-			specifier->flags ^= 2;
+			specifier->flags ^= FLAG_PLUS;
 		if (**format == ' ')
-			specifier->flags ^= 4;
+			specifier->flags ^= FLAG_SPACE;
 		if (**format == '#')
-			specifier->flags ^= 8;
+			specifier->flags ^= FLAG_OCTO;
 		if (**format == '0')
-			specifier->flags ^= 16;
+			specifier->flags ^= FLAG_ZERO;
 		(*format)++;
 	}
 	// Width
@@ -88,11 +88,6 @@ void	spec_handler(const char **format, va_list args, int *count)
 		specifier->specifier = **format;
 		(*format)++;
 	}
-	printf("Flags: %d\n", specifier->flags);
-	//printf("Length: %d\n", specifier.length);
-	printf("Precision: %d\n", specifier->precision);
-	printf("Width: %d\n", specifier->width);
-	printf("Specifier: %c\n", specifier->specifier);
 	call_spec_func(args, specifier, count);
 	free(specifier);
 }
@@ -100,15 +95,15 @@ void	spec_handler(const char **format, va_list args, int *count)
 void	call_spec_func(va_list args, t_specifier *specifier, int *count)
 {
 	if (specifier->specifier == 'c')
-		*count += print_c(args, specifier);
+		print_c(args, specifier, count);
 	if (specifier->specifier == 's')
-		*count += print_s(args, specifier);
+		print_s(args, specifier, count);
 	if (specifier->specifier == 'p')
-		*count += print_p(args, specifier);
+		print_p(args, specifier, count);
 	if (specifier->specifier == 'd' || specifier->specifier == 'i')
-		*count += print_d(args, specifier);
+		print_d(args, specifier, count);
 	if (specifier->specifier == 'u')
-		*count += print_u(args, specifier);
+		print_u(args, specifier, count);
 	if (specifier->specifier == 'x')
-		*count += print_x(args, specifier);
+		print_x(args, specifier, count);
 }
