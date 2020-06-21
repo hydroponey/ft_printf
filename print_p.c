@@ -6,14 +6,45 @@
 /*   By: asimoes <asimoes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 07:41:21 by asimoes           #+#    #+#             */
-/*   Updated: 2020/06/21 12:06:49 by asimoes          ###   ########.fr       */
+/*   Updated: 2020/06/21 18:34:14 by asimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./libft/libft.h"
 #include "ft_printf.h"
 
+void write_char(char c)
+{
+	write(1, &c, 1);
+}
+
+char hex_digit(int v) {
+    if (v >= 0 && v < 10)
+        return '0' + v;
+    else
+        return 'a' + v - 10; // <-- Here
+}
+
+void print_address_hex(void* p0) {
+    int i;
+    unsigned long p = (unsigned long)p0;
+	int leading_zero = 1;
+
+    write_char('0'); write_char('x');
+    for(i = (sizeof(p) << 3) - 4; i>=0; i -= 4) {
+		if (leading_zero && (hex_digit((p >> i) & 0xf)) == '0')
+			continue;
+		else
+			leading_zero = 0;
+        write_char(hex_digit((p >> i) & 0xf));
+    }
+}
+
 void	print_p(va_list args, t_specifier *specifier, int *count)
 {
-	
+	void	*ptr;
+
+	ptr = (void*)va_arg(args, void*);
+
+	print_address_hex(ptr);
 }
