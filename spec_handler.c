@@ -6,7 +6,7 @@
 /*   By: asimoes <asimoes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/03 11:48:05 by asimoes           #+#    #+#             */
-/*   Updated: 2020/06/21 12:04:52 by asimoes          ###   ########.fr       */
+/*   Updated: 2020/06/21 18:39:17 by asimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void	spec_handler(const char **format, va_list args, int *count)
 	specifier->precision = -1;
 	specifier->length = -1;
 	specifier->specifier = -1;
+	specifier->character = -1;
 
 	(*format)++;
 	if (**format == '%')
@@ -86,6 +87,12 @@ void	spec_handler(const char **format, va_list args, int *count)
 	if (**format == 'c' || **format == 's' || **format == 'p' || **format == 'd' || **format == 'i' || **format == 'u' || **format == 'x' || **format == 'X')
 	{
 		specifier->specifier = **format;
+		(*format)++;
+	}
+	else
+	{
+		specifier->specifier = 'c';
+		specifier->character = **format;
 		(*format)++;
 	}
 	call_spec_func(args, specifier, count);
