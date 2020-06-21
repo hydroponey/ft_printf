@@ -6,7 +6,7 @@
 /*   By: asimoes <asimoes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 07:41:21 by asimoes           #+#    #+#             */
-/*   Updated: 2020/06/21 18:41:33 by asimoes          ###   ########.fr       */
+/*   Updated: 2020/06/22 00:55:54 by asimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,9 @@ void		print_c(va_list args, t_specifier *specifier, int *count)
 	int		c;
 
 	if (specifier->character != -1)
-	{
 		c = specifier->character;
-	}
 	else
-	{
 		c = (int)va_arg(args, int);
-	}
 	if (!(str = malloc(2 * sizeof(char))))
 	{
 		*count = -1;
