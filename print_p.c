@@ -6,7 +6,7 @@
 /*   By: asimoes <asimoes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 07:41:21 by asimoes           #+#    #+#             */
-/*   Updated: 2020/06/25 03:15:19 by asimoes          ###   ########.fr       */
+/*   Updated: 2020/06/25 03:16:34 by asimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,8 @@ void	print_p(va_list args, t_specifier *specifier, int *count)
 	ptr = (void*)va_arg(args, void*);
 	if (ptr == NULL)
 	{
-		ft_putstr_fd("(null)", 1);
-		*count += 6;
+		ft_putstr_fd("0x0", 1);
+		*count += 3;
 	}
 	else
 	{
