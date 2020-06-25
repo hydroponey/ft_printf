@@ -6,7 +6,7 @@
 #    By: asimoes <asimoes@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/03 11:31:41 by asimoes           #+#    #+#              #
-#    Updated: 2020/06/21 12:18:52 by asimoes          ###   ########.fr        #
+#    Updated: 2020/06/25 11:02:31 by asimoes          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ NAME	=	libftprintf.a
 $(NAME):
 				gcc -c -Wall -Werror -Wextra libft/*.c -I libft/
 				gcc -c $(SRCS)
-				ar rc $(NAME) $(OBJ)
+				ar rc $(NAME) *.o
 				ranlib $(NAME)
 all:			$(NAME)
 
