@@ -6,7 +6,7 @@
 /*   By: asimoes <asimoes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/03 11:35:07 by asimoes           #+#    #+#             */
-/*   Updated: 2020/06/21 12:00:39 by asimoes          ###   ########.fr       */
+/*   Updated: 2020/06/24 10:35:39 by asimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ typedef struct	s_specifier {
 	int			precision;
 	int			length;
 	char		specifier;
+	char		character;
 }				t_specifier;
 
 char	*pad_left(char c, int n, char *data);

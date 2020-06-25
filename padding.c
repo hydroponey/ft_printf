@@ -6,7 +6,7 @@
 /*   By: asimoes <asimoes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/21 11:42:59 by asimoes           #+#    #+#             */
-/*   Updated: 2020/06/21 11:49:37 by asimoes          ###   ########.fr       */
+/*   Updated: 2020/06/24 10:35:31 by asimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ char	*pad_left(char c, int n, char *data)
 	while (n--)
 		padding[n] = c;
 	padded_string = ft_strjoin(padding, data);
-	free(data);
 	return (padded_string);
 }
 
@@ -35,6 +34,5 @@ char	*pad_right(char c, int n, char *data)
 	while (n--)
 		padding[n] = c;
 	padded_string = ft_strjoin(data, padding);
-	free(data);
 	return (padded_string);
 }
