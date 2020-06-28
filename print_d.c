@@ -6,14 +6,14 @@
 /*   By: asimoes <asimoes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 07:41:21 by asimoes           #+#    #+#             */
-/*   Updated: 2020/06/28 05:06:23 by asimoes          ###   ########.fr       */
+/*   Updated: 2020/06/28 05:08:25 by asimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./libft/libft.h"
 #include "ft_printf.h"
 
-char	*set_precision(char *number, int precision, int *len)
+char	*set_precision(char *number_str, int number, int precision, int *len)
 {
 	char	*newstr;
 
@@ -21,13 +21,13 @@ char	*set_precision(char *number, int precision, int *len)
 	{
 		if (number < 0)
 		{
-			newstr = pad_left('0', precision - *len, number);
+			newstr = pad_left('0', precision - *len, number_str);
 			newstr[0] = '-';
 			newstr[precision - *len] = '0';
 		}
 		else
 		{
-			newstr = pad_left('0', precision - *len, number);
+			newstr = pad_left('0', precision - *len, number_str);
 		}
 		*len += precision - *len;
 	}
@@ -49,7 +49,7 @@ void		print_d(va_list args, t_specifier *specifier, int *count)
 		return ;
 	}
 	len = ft_strlen(number_str);
-	number_str = set_precision(number_str, specifier->precision, &len);
+	number_str = set_precision(number_str, number, specifier->precision, &len);
 	/*if (specifier->precision > len)
 	{
 		if (number < 0)
