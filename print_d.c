@@ -6,7 +6,7 @@
 /*   By: asimoes <asimoes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 07:41:21 by asimoes           #+#    #+#             */
-/*   Updated: 2020/06/28 05:08:25 by asimoes          ###   ########.fr       */
+/*   Updated: 2020/06/28 05:09:44 by asimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ char	*set_precision(char *number_str, int number, int precision, int *len)
 {
 	char	*newstr;
 
+	newstr = number_str;
 	if (precision > *len)
 	{
 		if (number < 0)
