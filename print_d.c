@@ -6,12 +6,33 @@
 /*   By: asimoes <asimoes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 07:41:21 by asimoes           #+#    #+#             */
-/*   Updated: 2020/06/24 10:37:17 by asimoes          ###   ########.fr       */
+/*   Updated: 2020/06/28 05:06:23 by asimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./libft/libft.h"
 #include "ft_printf.h"
+
+char	*set_precision(char *number, int precision, int *len)
+{
+	char	*newstr;
+
+	if (precision > *len)
+	{
+		if (number < 0)
+		{
+			newstr = pad_left('0', precision - *len, number);
+			newstr[0] = '-';
+			newstr[precision - *len] = '0';
+		}
+		else
+		{
+			newstr = pad_left('0', precision - *len, number);
+		}
+		*len += precision - *len;
+	}
+	return (newstr);
+}
 
 void		print_d(va_list args, t_specifier *specifier, int *count)
 {
@@ -28,7 +49,8 @@ void		print_d(va_list args, t_specifier *specifier, int *count)
 		return ;
 	}
 	len = ft_strlen(number_str);
-	if (specifier->precision > len)
+	number_str = set_precision(number_str, specifier->precision, &len);
+	/*if (specifier->precision > len)
 	{
 		if (number < 0)
 		{
@@ -46,7 +68,7 @@ void		print_d(va_list args, t_specifier *specifier, int *count)
 			free(temp);
 			len += specifier->precision - len;
 		}
-	}
+	}*/
 	if (specifier->flags & FLAG_PLUS && number > 0)
 	{
 		temp = number_str;
