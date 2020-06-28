@@ -6,7 +6,7 @@
 /*   By: asimoes <asimoes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 07:41:21 by asimoes           #+#    #+#             */
-/*   Updated: 2020/06/28 05:11:45 by asimoes          ###   ########.fr       */
+/*   Updated: 2020/06/28 08:16:49 by asimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,15 +22,15 @@ char	*set_precision(char *number_str, int number, int precision, int *len)
 	{
 		if (number < 0)
 		{
-			newstr = pad_left('0', precision - *len, number_str);
+			newstr = pad_left('0', precision - *len + 1, number_str);
 			newstr[0] = '-';
-			newstr[precision - *len] = '0';
+			newstr[precision - *len + 1] = '0';
 		}
 		else
 		{
 			newstr = pad_left('0', precision - *len, number_str);
 		}
-		*len += precision - *len;
+		*len = ft_strlen(newstr);
 	}
 	return (newstr);
 }
@@ -51,6 +51,7 @@ void		print_d(va_list args, t_specifier *specifier, int *count)
 	}
 	len = ft_strlen(number_str);
 	number_str = set_precision(number_str, number, specifier->precision, &len);
+	//printf("after set_precision: %s\n", number_str);
 	/*if (specifier->precision > len)
 	{
 		if (number < 0)
@@ -95,11 +96,6 @@ void		print_d(va_list args, t_specifier *specifier, int *count)
 			temp = number_str;
 			number_str = pad_left((specifier->flags & FLAG_ZERO && specifier->precision == -1) ? '0' : ' ', specifier->width - len, number_str);
 			free(temp);
-			if (number_str[specifier->width - len] == '-')
-			{
-				number_str[0] = '-';
-				number_str[specifier->width - len] = '0';
-			}
 		}
 	}
 	if (number > 0 && len > specifier->width && specifier->flags & FLAG_SPACE)
