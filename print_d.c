@@ -6,7 +6,7 @@
 /*   By: asimoes <asimoes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 07:41:21 by asimoes           #+#    #+#             */
-/*   Updated: 2020/06/28 08:16:49 by asimoes          ###   ########.fr       */
+/*   Updated: 2020/06/28 10:32:29 by asimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,26 +51,6 @@ void		print_d(va_list args, t_specifier *specifier, int *count)
 	}
 	len = ft_strlen(number_str);
 	number_str = set_precision(number_str, number, specifier->precision, &len);
-	//printf("after set_precision: %s\n", number_str);
-	/*if (specifier->precision > len)
-	{
-		if (number < 0)
-		{
-			number_str[0] = '0';
-			temp = number_str;
-			number_str = pad_left('0', specifier->precision - len + 1, number_str);
-			free(temp);
-			number_str[0] = '-';
-			len += specifier->precision - len + 1;
-		}
-		else
-		{
-			temp = number_str;
-			number_str = pad_left('0', specifier->precision - len, number_str);
-			free(temp);
-			len += specifier->precision - len;
-		}
-	}*/
 	if (specifier->flags & FLAG_PLUS && number > 0)
 	{
 		temp = number_str;
@@ -82,6 +62,12 @@ void		print_d(va_list args, t_specifier *specifier, int *count)
 	{
 		number_str[len - 1] = '\0';
 		len--;
+	}
+	if (specifier->width < 0)
+	{
+		specifier->width *= -1;
+		if ((specifier->flags & FLAG_MINUS) == 0)
+			specifier->flags ^= FLAG_MINUS;
 	}
 	if (len < specifier->width)
 	{
