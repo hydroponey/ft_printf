@@ -6,6 +6,8 @@ SRCS	=	main.c\
 			../libft/ft_strjoin.c\
 			../libft/ft_strlen.c\
 			../libft/ft_itoa.c\
+			../libft/ft_strlcpy.c\
+			../libft/ft_substr.c\
 			../libft/ft_memset.c\
 			../ft_printf.c\
 			../print_c.c\

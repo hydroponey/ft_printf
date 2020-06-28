@@ -6,7 +6,7 @@
 /*   By: asimoes <asimoes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/03 11:46:13 by asimoes           #+#    #+#             */
-/*   Updated: 2020/06/21 18:31:01 by asimoes          ###   ########.fr       */
+/*   Updated: 2020/06/28 08:21:56 by asimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,8 @@
 int main()
 {
 	char	*ptr = "salut ça va";
-	printf("[                         DECIMAL                          ]\n");
+	/*printf("[                         DECIMAL                          ]\n");
 	printf("---------------------------WIDTH----------------------------\n");
-	/*printf("%-20s| %-20s| %-20s| %-20s\n", "TITLE", "SPECIFIER", "NUMBER", "RESULT");
-	printf("%-20s| %-20s| %-20d| ", "Default width of 10", "%10d", 1337, 1337);
-	ft_printf("%10d|\n", 1337);
-	return (0);*/
 	printf("%%10d 1337:\t\t |%10d|\n", 1337);
 	ft_printf("%%10d 1337:\t\t |%10d|\n", 1337);
 	printf("%%-10d 1337:\t\t |%-10d|\n", 1337);
@@ -155,7 +151,12 @@ int main()
 	ft_printf("Precision zero:\t\t\t\t |%025.0c|\n", 'a');
 	printf("---------------------------POINTER--------------------------\n");
 	printf("Pointer: %p\n", ptr);
-	ft_printf("Pointer: %p\n", ptr);
+	ft_printf("Pointer: %p\n", ptr);*/
+
+	printf("%05%\n");
+	ft_printf("%05%\n");
+	printf("%05a\n");
+	ft_printf("%05a\n");
 	
 	
 	return (0);
