@@ -6,7 +6,7 @@
 /*   By: asimoes <asimoes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 07:41:21 by asimoes           #+#    #+#             */
-/*   Updated: 2020/06/28 11:55:18 by asimoes          ###   ########.fr       */
+/*   Updated: 2020/06/29 04:18:32 by asimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,11 +75,34 @@ char		*set_width(char *number_str, int number, t_specifier *specifier, int *len)
 			number_str = d_pad_right(' ', specifier->width - *len, number_str);
 		else
 		{
-			number_str = d_pad_left((specifier->flags & FLAG_ZERO && specifier->precision == -1) ? '0' : ' ', specifier->width - *len, number_str);
-			if (number < 0 && specifier->precision != -1)
+			if (specifier->flags & FLAG_ZERO)
 			{
-				number_str[0] = '-';
-				number_str[specifier->width - *len] = '0';
+				if (specifier->precision == -1)
+				{
+					if (number < 0)
+					{
+						number_str = d_pad_left('0', specifier->width - *len, number_str);
+						number_str[0] = '-';
+						number_str[specifier->width - *len] = '0';
+					}
+				}
+				else
+				{
+					if (number < 0)
+					{
+						number_str = d_pad_left('0', specifier->width - *len + 1, number_str);
+						number_str[0] = '-';
+						number_str[specifier->width - *len + 1] = '0';
+					}
+					else
+					{
+						number_str = d_pad_left('0', specifier->width - *len, number_str);
+					}
+				}
+			}
+			else
+			{
+				number_str = d_pad_left(' ', specifier->width - *len, number_str);
 			}
 		}
 	}
@@ -107,6 +130,7 @@ void		print_d(va_list args, t_specifier *specifier, int *count)
 	}
 	if (specifier->precision == 0 && number == 0)
 		number_str[--len] = '\0';
+	//printf("Before width: %s\n", number_str);
 	number_str = set_width(number_str, number, specifier, &len);
 	if (number > 0 && len > specifier->width && specifier->flags & FLAG_SPACE)
 		number_str = d_pad_left(' ', 1, number_str);
