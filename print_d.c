@@ -6,7 +6,7 @@
 /*   By: asimoes <asimoes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 07:41:21 by asimoes           #+#    #+#             */
-/*   Updated: 2020/06/29 04:18:32 by asimoes          ###   ########.fr       */
+/*   Updated: 2020/06/29 09:50:00 by asimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,19 +85,14 @@ char		*set_width(char *number_str, int number, t_specifier *specifier, int *len)
 						number_str[0] = '-';
 						number_str[specifier->width - *len] = '0';
 					}
-				}
-				else
-				{
-					if (number < 0)
-					{
-						number_str = d_pad_left('0', specifier->width - *len + 1, number_str);
-						number_str[0] = '-';
-						number_str[specifier->width - *len + 1] = '0';
-					}
 					else
 					{
 						number_str = d_pad_left('0', specifier->width - *len, number_str);
 					}
+				}
+				else
+				{
+					number_str = d_pad_left(' ', specifier->width - *len, number_str);
 				}
 			}
 			else
