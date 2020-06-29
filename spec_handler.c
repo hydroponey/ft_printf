@@ -6,7 +6,7 @@
 /*   By: asimoes <asimoes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/03 11:48:05 by asimoes           #+#    #+#             */
-/*   Updated: 2020/06/22 01:03:34 by asimoes          ###   ########.fr       */
+/*   Updated: 2020/06/29 15:59:16 by asimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	spec_handler(const char **format, va_list args, int *count)
 		return ;
 	}
 	specifier->flags = 0;
+	specifier->is_width = 0;
 	specifier->width = -1;
 	specifier->precision = -1;
 	specifier->length = -1;
@@ -56,6 +57,7 @@ void	spec_handler(const char **format, va_list args, int *count)
 	// Width
 	if (**format == '*')
 	{
+		specifier->is_width = 1;
 		specifier->width = (int)va_arg(args, int);
 		(*format)++;
 	}
@@ -63,6 +65,7 @@ void	spec_handler(const char **format, va_list args, int *count)
 	{
 		if (**format >= '0' && **format <= '9')
 		{
+			specifier->is_width = 1;
 			specifier->width = ft_atoi(*format);
 			while (**format >= '0' && **format <= '9')
 				(*format)++;
