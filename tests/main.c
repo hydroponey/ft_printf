@@ -6,7 +6,7 @@
 /*   By: asimoes <asimoes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/03 11:46:13 by asimoes           #+#    #+#             */
-/*   Updated: 2020/06/28 11:59:38 by asimoes          ###   ########.fr       */
+/*   Updated: 2020/07/01 10:05:09 by asimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,20 +153,8 @@ int main()
 	printf("Pointer: %p\n", ptr);
 	ft_printf("Pointer: %p\n", ptr);*/
 
-	printf("|%07d|\n", -54);
-	ft_printf("|%07d|\n", -54);
-	
-	printf("|%10.5d|\n", -216);
-	ft_printf("|%10.5d|\n", -216);
-	
-	printf("|%8.3d|\n", -8473);
-	ft_printf("|%8.3d|\n", -8473);
-	
-	printf("|%010.5d|\n", -216);
-	ft_printf("|%010.5d|\n", -216);
-
-	printf("|%08.3d|\n", -8473);
-	ft_printf("|%08.3d|\n", -8473);
+	printf("|%5c|\n", '\0');
+	ft_printf("|%5c|\n", '\0');
 	
 	return (0);
 }
