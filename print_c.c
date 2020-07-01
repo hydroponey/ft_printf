@@ -6,7 +6,7 @@
 /*   By: asimoes <asimoes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 07:41:21 by asimoes           #+#    #+#             */
-/*   Updated: 2020/07/01 07:40:41 by asimoes          ###   ########.fr       */
+/*   Updated: 2020/07/01 07:43:38 by asimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,14 @@ void		print_nulchar(va_list args, t_specifier *specifier, int *count)
 {
 	if (specifier->is_width && (specifier->flags & FLAG_MINUS) == 0)
 	{
-		while (specifier->width-- && *count++)
+		while (--specifier->width && *count++)
 			ft_putchar(' ');
 	}
 	ft_putchar(0);
 	*count++;
 	if (specifier->is_width && specifier->flags & FLAG_MINUS)
 	{
-		while (specifier->width-- && *count++)
+		while (--specifier->width && *count++)
 			ft_putchar(' ');
 	}
 }
@@ -38,14 +38,14 @@ void		print_c(va_list args, t_specifier *specifier, int *count)
 		c = specifier->character;
 	else
 		c = (int)va_arg(args, int);
+	if (c == 0)
+	{
+		print_nulchar(args, specifier, count);
+		return ;
+	}
 	if (!(str = malloc(2 * sizeof(char))))
 	{
 		*count = -1;
-		return ;
-	}
-	if (c == NULL)
-	{
-		print_nulchar(args, specifier, count);
 		return ;
 	}
 	str[0] = (char)c;
