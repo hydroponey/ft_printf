@@ -6,7 +6,7 @@
 /*   By: asimoes <asimoes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 07:41:21 by asimoes           #+#    #+#             */
-/*   Updated: 2020/06/29 15:59:54 by asimoes          ###   ########.fr       */
+/*   Updated: 2020/07/02 21:24:09 by asimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ char		*set_precision(char *num_str, int num, int precision, int *len)
 	return (newstr);
 }
 
-char		*set_width(char *number_str, int number, t_specifier *specifier, int *len)
+char		*set_width(char *str, int number, t_specifier *specifier, int *len)
 {
 	if (specifier->is_width && specifier->width < 0)
 	{
@@ -69,39 +69,25 @@ char		*set_width(char *number_str, int number, t_specifier *specifier, int *len)
 		if ((specifier->flags & FLAG_MINUS) == 0)
 			specifier->flags ^= FLAG_MINUS;
 	}
-	if (*len < specifier->width)
+	if (*len >= specifier->width)
+		return (str);
+	if (specifier->flags & FLAG_MINUS)
+		str = d_pad_right(' ', specifier->width - *len, str);
+	else
 	{
-		if (specifier->flags & FLAG_MINUS)
-			number_str = d_pad_right(' ', specifier->width - *len, number_str);
-		else
+		if (specifier->flags & FLAG_ZERO && specifier->precision == -1)
 		{
-			if (specifier->flags & FLAG_ZERO)
+			str = d_pad_left('0', specifier->width - *len, str);
+			if (number < 0)
 			{
-				if (specifier->precision == -1)
-				{
-					if (number < 0)
-					{
-						number_str = d_pad_left('0', specifier->width - *len, number_str);
-						number_str[0] = '-';
-						number_str[specifier->width - *len] = '0';
-					}
-					else
-					{
-						number_str = d_pad_left('0', specifier->width - *len, number_str);
-					}
-				}
-				else
-				{
-					number_str = d_pad_left(' ', specifier->width - *len, number_str);
-				}
-			}
-			else
-			{
-				number_str = d_pad_left(' ', specifier->width - *len, number_str);
+				str[0] = '-';
+				str[specifier->width - *len] = '0';
 			}
 		}
+		else
+			str = d_pad_left(' ', specifier->width - *len, str);
 	}
-	return (number_str);
+	return (str);
 }
 
 void		print_d(va_list args, t_specifier *specifier, int *count)
