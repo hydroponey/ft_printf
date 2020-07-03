@@ -6,7 +6,7 @@
 /*   By: asimoes <asimoes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 07:41:21 by asimoes           #+#    #+#             */
-/*   Updated: 2020/07/03 16:52:48 by asimoes          ###   ########.fr       */
+/*   Updated: 2020/07/03 17:56:55 by asimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,16 @@ char	*get_hex_str(unsigned int number, short int capitalize)
 	return (str);
 }
 
+static char		*set_precision(char *num_str, int precision)
+{
+	int len;
+
+	len = ft_strlen(num_str);
+	if (precision != -1 && precision > len)
+		num_str = pad_left('0', precision - len, num_str);
+	return (num_str);
+}
+
 static char		*set_width(char *str, unsigned int number, t_specifier *specifier)
 {
 	int len;
@@ -113,6 +123,7 @@ void			print_x(va_list args, t_specifier *specifier, int *count)
 		*count = -1;
 		return ;
 	}
+	str = set_precision(str, specifier->precision);
 	str = set_width(str, number, specifier);
 	ft_putstr_fd(str, 1);
 	*count += ft_strlen(str);
