@@ -6,7 +6,7 @@
 /*   By: asimoes <asimoes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 07:41:21 by asimoes           #+#    #+#             */
-/*   Updated: 2020/07/03 17:56:55 by asimoes          ###   ########.fr       */
+/*   Updated: 2020/07/06 19:06:36 by asimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,6 +116,7 @@ void			print_x(va_list args, t_specifier *specifier, int *count)
 {
 	unsigned int	number;
 	char			*str;
+	int				len;
 
 	number = (unsigned int)va_arg(args, unsigned int);
 	if (!(str = get_hex_str(number, (specifier->specifier == 'X') ? 1 : 0)))
@@ -123,7 +124,10 @@ void			print_x(va_list args, t_specifier *specifier, int *count)
 		*count = -1;
 		return ;
 	}
+	len = ft_strlen(str);
 	str = set_precision(str, specifier->precision);
+	if (specifier->precision == 0 && number == 0)
+		str[--len] = '\0';
 	str = set_width(str, number, specifier);
 	ft_putstr_fd(str, 1);
 	*count += ft_strlen(str);
