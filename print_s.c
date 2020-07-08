@@ -6,7 +6,7 @@
 /*   By: asimoes <asimoes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 11:32:06 by asimoes           #+#    #+#             */
-/*   Updated: 2020/06/24 11:53:57 by asimoes          ###   ########.fr       */
+/*   Updated: 2020/07/08 17:55:06 by asimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	print_s(va_list args, t_specifier *specifier, int *count)
 		ft_strlcpy(str, "(null)", 7);
 	}
 	len = ft_strlen(str);
-	if (specifier->precision != -1 && specifier->precision < len)
+	if (specifier->precision >= 0 && specifier->precision < len)
 	{
 		str = ft_substr(str, 0, specifier->precision);
 		len = specifier->precision;
