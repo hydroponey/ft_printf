@@ -6,14 +6,47 @@
 /*   By: asimoes <asimoes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/03 11:46:13 by asimoes           #+#    #+#             */
-/*   Updated: 2020/07/01 10:05:09 by asimoes          ###   ########.fr       */
+/*   Updated: 2020/07/08 17:35:00 by asimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>
+#include "../libft/libft.h"
 #include "../ft_printf.h"
+
+char	*t_get_address_str(void *ptr)
+{
+	char			*str;
+	int				i;
+	unsigned long	p0;
+	char			cur[2];
+	int				temp;
+	
+	p0 = (unsigned long)ptr;
+	str = malloc(1);
+	str[0] = '\0';
+	i = 0;
+	while (p0 != 0)
+	{
+		temp = p0 % 16;
+		if (temp < 10)
+		{
+			cur[0] = temp + 48;
+			cur[1] = '\0';
+			str = ft_strjoin(cur, str);
+		}
+		else
+		{
+			cur[0] = temp + 87;
+			cur[1] = '\0';
+			str = ft_strjoin(cur, str);
+		}
+		p0 = p0/16;
+	}
+	return (str);
+}
 
 int main()
 {
@@ -152,7 +185,7 @@ int main()
 	printf("---------------------------POINTER--------------------------\n");
 	printf("Pointer: %p\n", ptr);
 	ft_printf("Pointer: %p\n", ptr);*/
-
+	
 	printf("|%5c|\n", '\0');
 	ft_printf("|%5c|\n", '\0');
 	
