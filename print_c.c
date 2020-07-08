@@ -6,7 +6,7 @@
 /*   By: asimoes <asimoes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 07:41:21 by asimoes           #+#    #+#             */
-/*   Updated: 2020/07/01 10:22:32 by asimoes          ###   ########.fr       */
+/*   Updated: 2020/07/08 17:48:07 by asimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void		print_nulchar(va_list args, t_specifier *specifier, int *count)
 			ft_putchar(' ');
 	}
 	ft_putchar((char)0);
-	*count++;
+	(*count)++;
 	if (specifier->is_width && specifier->flags & FLAG_MINUS)
 	{
 		while (--specifier->width && (*count)++)
