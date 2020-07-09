@@ -6,7 +6,7 @@
 /*   By: asimoes <asimoes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/03 11:48:05 by asimoes           #+#    #+#             */
-/*   Updated: 2020/07/09 14:46:16 by asimoes          ###   ########.fr       */
+/*   Updated: 2020/07/09 21:35:38 by asimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ void	spec_handler(const char **format, va_list args, int *count)
 	specifier->specifier = -1;
 	specifier->character = -1;
 	(*format)++;
+	if (**format == '\0')
+		return ;
 	if (**format == '%')
 	{
 		ft_putchar_fd('%', 1);
