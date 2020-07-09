@@ -6,7 +6,7 @@
 /*   By: asimoes <asimoes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 07:41:21 by asimoes           #+#    #+#             */
-/*   Updated: 2020/07/09 14:29:11 by asimoes          ###   ########.fr       */
+/*   Updated: 2020/07/09 14:57:27 by asimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,18 +32,15 @@ void		print_nulchar(va_list args, t_specifier *specifier, int *count)
 	}
 }
 
-void		print_c(va_list args, t_specifier *specifier, int *count)
+void		print_c(va_list args, t_specifier *s, int *count)
 {
 	char	*str;
 	int		c;
 
-	if (specifier->character != -1)
-		c = specifier->character;
-	else
-		c = (int)va_arg(args, int);
+	c = (s->character != -1) ? s->character : (int)va_arg(args, int);
 	if (c == 0)
 	{
-		print_nulchar(args, specifier, count);
+		print_nulchar(args, s, count);
 		return ;
 	}
 	if (!(str = malloc(2 * sizeof(char))))
@@ -53,13 +50,10 @@ void		print_c(va_list args, t_specifier *specifier, int *count)
 	}
 	str[0] = (char)c;
 	str[1] = '\0';
-	if (specifier->width > 1)
-	{
-		if (specifier->flags & FLAG_MINUS)
-			str = pad_right(' ', specifier->width - 1, str, 1);
-		else
-			str = pad_left((specifier->flags & FLAG_ZERO) ? '0' : ' ', specifier->width - 1, str, 1);
-	}
+	if (s->width > 1 && s->flags & FLAG_MINUS)
+		str = pad_right(' ', s->width - 1, str, 1);
+	else if (s->width > 1)
+		str = pad_left(s->flags & FLAG_ZERO ? '0' : ' ', s->width - 1, str, 1);
 	ft_putstr_fd(str, 1);
 	*count += ft_strlen(str);
 	free(str);
