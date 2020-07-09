@@ -6,7 +6,7 @@
 /*   By: asimoes <asimoes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 11:32:06 by asimoes           #+#    #+#             */
-/*   Updated: 2020/07/09 14:28:22 by asimoes          ###   ########.fr       */
+/*   Updated: 2020/07/09 21:46:37 by asimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	print_s(va_list args, t_specifier *specifier, int *count)
 	if (specifier->flags & FLAG_MINUS && specifier->width > len)
 	{
 		tmp = (free_ptr) ? str : NULL;
-		str = pad_right(' ', specifier->width - len, str, 0);
+		str = pad_right((specifier->flags & FLAG_ZERO) ? '0' : ' ', specifier->width - len, str, 0);
 		free(tmp);
 	}
 	else if (specifier->width > len)
