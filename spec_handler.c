@@ -6,7 +6,7 @@
 /*   By: asimoes <asimoes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/03 11:48:05 by asimoes           #+#    #+#             */
-/*   Updated: 2020/07/08 17:52:09 by asimoes          ###   ########.fr       */
+/*   Updated: 2020/07/08 20:35:03 by asimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,11 @@ void	spec_handler(const char **format, va_list args, int *count)
 	specifier->flags = 0;
 	specifier->is_width = 0;
 	specifier->width = -1;
+	specifier->is_precision = 0;
 	specifier->precision = -1;
 	specifier->length = -1;
 	specifier->specifier = -1;
 	specifier->character = -1;
-
 	(*format)++;
 	if (**format == '%')
 	{
@@ -39,60 +39,9 @@ void	spec_handler(const char **format, va_list args, int *count)
 		free(specifier);
 		return ;
 	}
-	// Flags
-	while (**format == '-' || **format == '+' || **format == ' ' || **format == '#' || **format == '0')
-	{
-		if (**format == '-')
-			specifier->flags ^= FLAG_MINUS;
-		if (**format == '+')
-			specifier->flags ^= FLAG_PLUS;
-		if (**format == ' ')
-			specifier->flags ^= FLAG_SPACE;
-		if (**format == '#')
-			specifier->flags ^= FLAG_OCTO;
-		if (**format == '0')
-			specifier->flags ^= FLAG_ZERO;
-		(*format)++;
-	}
-	// Width
-	if (**format == '*')
-	{
-		specifier->is_width = 1;
-		specifier->width = (int)va_arg(args, int);
-		(*format)++;
-	}
-	else
-	{
-		if (**format >= '0' && **format <= '9')
-		{
-			specifier->is_width = 1;
-			specifier->width = ft_atoi(*format);
-			while (**format >= '0' && **format <= '9')
-				(*format)++;
-		}
-	}
-	if (specifier->is_width && specifier->width < 0)
-	{
-		specifier->width *= -1;
-		if ((specifier->flags & FLAG_MINUS) == 0)
-			specifier->flags ^= FLAG_MINUS;
-	}
-	// Precision
-	if (**format == '.')
-	{
-		(*format)++;
-		if (**format == '*')
-		{
-			specifier->precision = (int)va_arg(args, int);
-			(*format)++;
-		}
-		else
-		{
-			specifier->precision = ft_atoi(*format);
-			while (**format >= '0' && **format <= '9')
-				(*format)++;
-		}
-	}
+	get_flags(format, specifier);
+	get_width(format, args, specifier);
+	get_precision(format, args, specifier);
 	if (**format == 'c' || **format == 's' || **format == 'p' || **format == 'd' || **format == 'i' || **format == 'u' || **format == 'x' || **format == 'X')
 	{
 		specifier->specifier = **format;
@@ -125,4 +74,67 @@ void	call_spec_func(va_list args, t_specifier *specifier, int *count)
 		print_u(args, specifier, count);
 	if (specifier->specifier == 'x' || specifier->specifier == 'X')
 		print_x(args, specifier, count);
+}
+
+void	get_flags(char **format, t_specifier *specifier)
+{
+	while (**format == '-' || **format == '+' || **format == ' ' || **format == '#' || **format == '0')
+	{
+		if (**format == '-')
+			specifier->flags ^= FLAG_MINUS;
+		if (**format == '+')
+			specifier->flags ^= FLAG_PLUS;
+		if (**format == ' ')
+			specifier->flags ^= FLAG_SPACE;
+		if (**format == '#')
+			specifier->flags ^= FLAG_OCTO;
+		if (**format == '0')
+			specifier->flags ^= FLAG_ZERO;
+		(*format)++;
+	}
+}
+
+void	get_width(char **format, va_list args, t_specifier *specifier)
+{
+	if (**format == '*')
+	{
+		specifier->is_width = 1;
+		specifier->width = (int)va_arg(args, int);
+		(*format)++;
+	}
+	else
+	{
+		if (**format >= '0' && **format <= '9')
+		{
+			specifier->is_width = 1;
+			specifier->width = ft_atoi(*format);
+			while (**format >= '0' && **format <= '9')
+				(*format)++;
+		}
+	}
+	if (specifier->is_width && specifier->width < 0)
+	{
+		specifier->width *= -1;
+		if ((specifier->flags & FLAG_MINUS) == 0)
+			specifier->flags ^= FLAG_MINUS;
+	}
+}
+
+void	get_precision(char **format, va_list args, t_specifier *specifier)
+{
+	if (**format == '.')
+	{
+		(*format)++;
+		if (**format == '*')
+		{
+			specifier->precision = (int)va_arg(args, int);
+			(*format)++;
+		}
+		else
+		{
+			specifier->precision = ft_atoi(*format);
+			while (**format >= '0' && **format <= '9')
+				(*format)++;
+		}
+	}
 }

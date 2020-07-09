@@ -6,14 +6,14 @@
 /*   By: asimoes <asimoes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 07:41:21 by asimoes           #+#    #+#             */
-/*   Updated: 2020/07/06 19:06:36 by asimoes          ###   ########.fr       */
+/*   Updated: 2020/07/09 14:11:52 by asimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./libft/libft.h"
 #include "ft_printf.h"
 
-char		*x_pad_left(char c, int n, char *data)
+char			*x_pad_left(char c, int n, char *data)
 {
 	char	padding[n + 1];
 	char	*padded_string;
@@ -26,7 +26,7 @@ char		*x_pad_left(char c, int n, char *data)
 	return (padded_string);
 }
 
-char		*x_pad_right(char c, int n, char *data)
+char			*x_pad_right(char c, int n, char *data)
 {
 	char	padding[n + 1];
 	char	*padded_string;
@@ -39,7 +39,7 @@ char		*x_pad_right(char c, int n, char *data)
 	return (padded_string);
 }
 
-char	*get_hex_str(unsigned int number, short int capitalize)
+char			*get_hex_str(unsigned int number, short int capitalize)
 {
 	char			*str;
 	int				i;
@@ -76,11 +76,11 @@ static char		*set_precision(char *num_str, int precision)
 
 	len = ft_strlen(num_str);
 	if (precision != -1 && precision > len)
-		num_str = pad_left('0', precision - len, num_str);
+		num_str = pad_left('0', precision - len, num_str, 1);
 	return (num_str);
 }
 
-static char		*set_width(char *str, unsigned int number, t_specifier *specifier)
+static char		*set_width(char *str, unsigned int num, t_specifier *specifier)
 {
 	int len;
 
@@ -94,20 +94,20 @@ static char		*set_width(char *str, unsigned int number, t_specifier *specifier)
 	if (len >= specifier->width)
 		return (str);
 	if (specifier->flags & FLAG_MINUS)
-		str = x_pad_right(' ', specifier->width - len, str);
+		str = pad_right(' ', specifier->width - len, str, 1);
 	else
 	{
 		if (specifier->flags & FLAG_ZERO && specifier->precision == -1)
 		{
-			str = x_pad_left('0', specifier->width - len, str);
-			if (number < 0)
+			str = pad_left('0', specifier->width - len, str, 1);
+			if (num < 0)
 			{
 				str[0] = '-';
 				str[specifier->width - len] = '0';
 			}
 		}
 		else
-			str = x_pad_left(' ', specifier->width - len, str);
+			str = pad_left(' ', specifier->width - len, str, 1);
 	}
 	return (str);
 }

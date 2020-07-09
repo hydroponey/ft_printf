@@ -6,7 +6,7 @@
 /*   By: asimoes <asimoes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/03 11:35:07 by asimoes           #+#    #+#             */
-/*   Updated: 2020/06/29 15:58:40 by asimoes          ###   ########.fr       */
+/*   Updated: 2020/07/08 20:53:08 by asimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,16 +33,20 @@ typedef struct	s_specifier {
 	short int	flags;
 	short int	is_width;
 	int			width;
+	short int	is_precision;
 	int			precision;
 	int			length;
 	char		specifier;
 	char		character;
 }				t_specifier;
 
-char	*pad_left(char c, int n, char *data);
-char	*pad_right(char c, int n, char *data);
+char	*pad_left(char c, int n, char *data, short int bFree);
+char	*pad_right(char c, int n, char *data, short int bFree);
 
 int		ft_printf(const char *format, ...);
+void	get_flags(char **format, t_specifier *specifier);
+void	get_width(char **format, va_list args, t_specifier *specifier);
+void	get_precision(char **format, va_list args, t_specifier *specifier);
 int		parse_specifier(const char **format, va_list args, t_specifier **specifier);
 void	print_c(va_list args, t_specifier *specifier, int *count);
 void	print_s(va_list args, t_specifier *specifier, int *count);
