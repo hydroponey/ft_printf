@@ -6,7 +6,7 @@
 /*   By: asimoes <asimoes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/03 11:48:05 by asimoes           #+#    #+#             */
-/*   Updated: 2020/07/09 21:35:38 by asimoes          ###   ########.fr       */
+/*   Updated: 2020/07/09 21:42:37 by asimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	spec_handler(const char **format, va_list args, int *count)
 		specifier->specifier = **format;
 		(*format)++;
 	}
-	else
+	else if (**format != '\0')
 	{
 		if (**format >= '0' && **format <= '9')
 			specifier->specifier = 'd';
