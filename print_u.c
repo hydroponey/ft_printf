@@ -6,7 +6,7 @@
 /*   By: asimoes <asimoes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 07:41:21 by asimoes           #+#    #+#             */
-/*   Updated: 2020/07/09 14:29:51 by asimoes          ###   ########.fr       */
+/*   Updated: 2020/07/09 14:48:22 by asimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,14 +105,14 @@ void		print_u(va_list args, t_specifier *specifier, int *count)
 	number_str = set_precision(number_str, number, specifier->precision, &len);
 	if (specifier->flags & FLAG_PLUS && number > 0)
 	{
-		number_str = u_pad_left('+', 1, number_str);
+		number_str = pad_left('+', 1, number_str, 1);
 		len++;
 	}
 	if (specifier->precision == 0 && number == 0)
 		number_str[--len] = '\0';
 	number_str = set_width(number_str, number, specifier, &len);
 	if (number > 0 && len > specifier->width && specifier->flags & FLAG_SPACE)
-		number_str = u_pad_left(' ', 1, number_str);
+		number_str = pad_left(' ', 1, number_str, 1);
 	ft_putstr_fd(number_str, 1);
 	*count += ft_strlen(number_str);
 	free(number_str);
