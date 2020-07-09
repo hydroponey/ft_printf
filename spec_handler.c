@@ -6,7 +6,7 @@
 /*   By: asimoes <asimoes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/03 11:48:05 by asimoes           #+#    #+#             */
-/*   Updated: 2020/07/08 20:35:03 by asimoes          ###   ########.fr       */
+/*   Updated: 2020/07/09 14:46:16 by asimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void	call_spec_func(va_list args, t_specifier *specifier, int *count)
 		print_x(args, specifier, count);
 }
 
-void	get_flags(char **format, t_specifier *specifier)
+void	get_flags(const char **format, t_specifier *specifier)
 {
 	while (**format == '-' || **format == '+' || **format == ' ' || **format == '#' || **format == '0')
 	{
@@ -94,7 +94,7 @@ void	get_flags(char **format, t_specifier *specifier)
 	}
 }
 
-void	get_width(char **format, va_list args, t_specifier *specifier)
+void	get_width(const char **format, va_list args, t_specifier *specifier)
 {
 	if (**format == '*')
 	{
@@ -120,7 +120,7 @@ void	get_width(char **format, va_list args, t_specifier *specifier)
 	}
 }
 
-void	get_precision(char **format, va_list args, t_specifier *specifier)
+void	get_precision(const char **format, va_list args, t_specifier *specifier)
 {
 	if (**format == '.')
 	{

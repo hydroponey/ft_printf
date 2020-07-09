@@ -6,7 +6,7 @@
 /*   By: asimoes <asimoes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 07:41:21 by asimoes           #+#    #+#             */
-/*   Updated: 2020/07/01 16:29:37 by asimoes          ###   ########.fr       */
+/*   Updated: 2020/07/09 14:29:51 by asimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,32 +53,6 @@ char			*ft_utoa(unsigned int n)
 	return (nbr);
 }
 
-char		*u_pad_left(char c, int n, char *data)
-{
-	char	padding[n + 1];
-	char	*padded_string;
-
-	ft_bzero(padding, n + 1);
-	while (n--)
-		padding[n] = c;
-	padded_string = ft_strjoin(padding, data);
-	free(data);
-	return (padded_string);
-}
-
-char		*u_pad_right(char c, int n, char *data)
-{
-	char	padding[n + 1];
-	char	*padded_string;
-
-	ft_bzero(padding, n + 1);
-	while (n--)
-		padding[n] = c;
-	padded_string = ft_strjoin(data, padding);
-	free(data);
-	return (padded_string);
-}
-
 static char		*set_precision(char *num_str, unsigned int num, int precision, int *len)
 {
 	char	*newstr;
@@ -86,7 +60,7 @@ static char		*set_precision(char *num_str, unsigned int num, int precision, int 
 	newstr = num_str;
 	if (precision != -1 && precision > *len)
 	{
-		newstr = pad_left('0', precision - *len, num_str);
+		newstr = pad_left('0', precision - *len, num_str, 1);
 		*len = ft_strlen(newstr);
 	}
 	return (newstr);
@@ -103,13 +77,13 @@ static char		*set_width(char *number_str, unsigned int number, t_specifier *spec
 	if (*len < specifier->width)
 	{
 		if (specifier->flags & FLAG_MINUS)
-			number_str = u_pad_right(' ', specifier->width - *len, number_str);
+			number_str = pad_right(' ', specifier->width - *len, number_str, 1);
 		else
 		{
 			if (specifier->flags & FLAG_ZERO && specifier->precision == -1)
-				number_str = u_pad_left('0', specifier->width - *len, number_str);
+				number_str = pad_left('0', specifier->width - *len, number_str, 1);
 			else
-				number_str = u_pad_left(' ', specifier->width - *len, number_str);
+				number_str = pad_left(' ', specifier->width - *len, number_str, 1);
 		}
 	}
 	return (number_str);
