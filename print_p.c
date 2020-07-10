@@ -6,38 +6,12 @@
 /*   By: asimoes <asimoes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 07:41:21 by asimoes           #+#    #+#             */
-/*   Updated: 2020/07/10 12:11:45 by asimoes          ###   ########.fr       */
+/*   Updated: 2020/07/10 19:21:50 by asimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./libft/libft.h"
 #include "ft_printf.h"
-
-char		*p_pad_left(char c, int n, char *data)
-{
-	char	padding[n + 1];
-	char	*padded_string;
-
-	ft_bzero(padding, n + 1);
-	while (n--)
-		padding[n] = c;
-	padded_string = ft_strjoin(padding, data);
-	free(data);
-	return (padded_string);
-}
-
-char		*p_pad_right(char c, int n, char *data)
-{
-	char	padding[n + 1];
-	char	*padded_string;
-
-	ft_bzero(padding, n + 1);
-	while (n--)
-		padding[n] = c;
-	padded_string = ft_strjoin(data, padding);
-	free(data);
-	return (padded_string);
-}
 
 char		*get_address_str(void *ptr)
 {
@@ -94,9 +68,9 @@ char		*p_set_width(char *str, t_specifier *specifier)
 	if (specifier->is_width && len < specifier->width)
 	{
 		if (specifier->flags & FLAG_MINUS)
-			str = p_pad_right(' ', specifier->width - len, str);
+			str = pad_right(' ', specifier->width - len, str, 1);
 		else
-			str = p_pad_left(' ', specifier->width - len, str);
+			str = pad_left(' ', specifier->width - len, str, 1);
 	}
 	return (str);
 }
