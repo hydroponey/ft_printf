@@ -6,7 +6,7 @@
 /*   By: asimoes <asimoes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/03 11:48:05 by asimoes           #+#    #+#             */
-/*   Updated: 2020/07/09 21:42:37 by asimoes          ###   ########.fr       */
+/*   Updated: 2020/07/10 12:11:24 by asimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,6 +126,7 @@ void	get_precision(const char **format, va_list args, t_specifier *specifier)
 {
 	if (**format == '.')
 	{
+		specifier->is_precision = 1;
 		(*format)++;
 		if (**format == '*')
 		{
@@ -138,5 +139,7 @@ void	get_precision(const char **format, va_list args, t_specifier *specifier)
 			while (**format >= '0' && **format <= '9')
 				(*format)++;
 		}
+		if (specifier->precision == -1)
+			specifier->precision = 0;
 	}
 }

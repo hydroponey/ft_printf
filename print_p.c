@@ -6,7 +6,7 @@
 /*   By: asimoes <asimoes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 07:41:21 by asimoes           #+#    #+#             */
-/*   Updated: 2020/07/02 21:09:48 by asimoes          ###   ########.fr       */
+/*   Updated: 2020/07/10 12:11:45 by asimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,24 @@ char		*get_address_str(void *ptr)
 		str = ft_strjoin(cur, str);
 		p0 = p0 / 16;
 	}
-	str = ft_strjoin("0x", str);
+	return (str);
+}
+
+char		*p_set_precision(char *str, t_specifier *specifier)
+{
+	int len;
+
+	len = ft_strlen(str);
+	if (specifier->is_precision)
+	{
+		if (specifier->precision == 0)
+		{
+			str[0] = '\0';
+			return (str);
+		}
+		if (specifier->precision > len)
+			str = pad_left('0', specifier->precision - len, str, 1);
+	}
 	return (str);
 }
 
@@ -74,7 +91,7 @@ char		*p_set_width(char *str, t_specifier *specifier)
 		if ((specifier->flags & FLAG_MINUS) == 0)
 			specifier->flags ^= FLAG_MINUS;
 	}
-	if (len < specifier->width)
+	if (specifier->is_width && len < specifier->width)
 	{
 		if (specifier->flags & FLAG_MINUS)
 			str = p_pad_right(' ', specifier->width - len, str);
@@ -93,17 +110,19 @@ void		print_p(va_list args, t_specifier *specifier, int *count)
 	ptr = (void*)va_arg(args, void*);
 	if (ptr == NULL)
 	{
-		if (!(str = malloc(sizeof(char) * 4)))
+		if (!(str = malloc(sizeof(char) * 2)))
 		{
 			*count = -1;
 			return ;
 		}
-		ft_strlcpy(str, "0x0", 4);
+		ft_strlcpy(str, "0", 2);
 	}
 	else
 	{
 		str = get_address_str(ptr);
 	}
+	str = p_set_precision(str, specifier);
+	str = ft_strjoin("0x", str);
 	str = p_set_width(str, specifier);
 	ft_putstr_fd(str, 1);
 	*count += ft_strlen(str);
