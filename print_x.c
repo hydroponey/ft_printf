@@ -6,38 +6,12 @@
 /*   By: asimoes <asimoes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 07:41:21 by asimoes           #+#    #+#             */
-/*   Updated: 2020/07/09 14:11:52 by asimoes          ###   ########.fr       */
+/*   Updated: 2020/07/10 20:15:40 by asimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./libft/libft.h"
 #include "ft_printf.h"
-
-char			*x_pad_left(char c, int n, char *data)
-{
-	char	padding[n + 1];
-	char	*padded_string;
-
-	ft_bzero(padding, n + 1);
-	while (n--)
-		padding[n] = c;
-	padded_string = ft_strjoin(padding, data);
-	free(data);
-	return (padded_string);
-}
-
-char			*x_pad_right(char c, int n, char *data)
-{
-	char	padding[n + 1];
-	char	*padded_string;
-
-	ft_bzero(padding, n + 1);
-	while (n--)
-		padding[n] = c;
-	padded_string = ft_strjoin(data, padding);
-	free(data);
-	return (padded_string);
-}
 
 char			*get_hex_str(unsigned int number, short int capitalize)
 {
