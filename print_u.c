@@ -6,14 +6,14 @@
 /*   By: asimoes <asimoes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 07:41:21 by asimoes           #+#    #+#             */
-/*   Updated: 2020/07/09 14:48:22 by asimoes          ###   ########.fr       */
+/*   Updated: 2020/07/10 19:33:56 by asimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./libft/libft.h"
 #include "ft_printf.h"
 
-static void		leftcat(char *s, char c)
+static void			leftcat(char *s, char c)
 {
 	int	len;
 
@@ -26,7 +26,7 @@ static void		leftcat(char *s, char c)
 	s[0] = c;
 }
 
-char			*ft_utoa(unsigned int n)
+static char			*ft_utoa(unsigned int n)
 {
 	char			*nbr;
 	unsigned long	long_nb;
@@ -53,7 +53,7 @@ char			*ft_utoa(unsigned int n)
 	return (nbr);
 }
 
-static char		*set_precision(char *num_str, unsigned int num, int precision, int *len)
+static char			*set_precision(char *num_str, int precision, int *len)
 {
 	char	*newstr;
 
@@ -66,7 +66,7 @@ static char		*set_precision(char *num_str, unsigned int num, int precision, int 
 	return (newstr);
 }
 
-static char		*set_width(char *number_str, unsigned int number, t_specifier *specifier, int *len)
+static char			*set_width(char *str, t_specifier *specifier, int *len)
 {
 	if (specifier->is_width && specifier->width < 0)
 	{
@@ -77,19 +77,19 @@ static char		*set_width(char *number_str, unsigned int number, t_specifier *spec
 	if (*len < specifier->width)
 	{
 		if (specifier->flags & FLAG_MINUS)
-			number_str = pad_right(' ', specifier->width - *len, number_str, 1);
+			str = pad_right(' ', specifier->width - *len, str, 1);
 		else
 		{
 			if (specifier->flags & FLAG_ZERO && specifier->precision == -1)
-				number_str = pad_left('0', specifier->width - *len, number_str, 1);
+				str = pad_left('0', specifier->width - *len, str, 1);
 			else
-				number_str = pad_left(' ', specifier->width - *len, number_str, 1);
+				str = pad_left(' ', specifier->width - *len, str, 1);
 		}
 	}
-	return (number_str);
+	return (str);
 }
 
-void		print_u(va_list args, t_specifier *specifier, int *count)
+void				print_u(va_list args, t_specifier *specifier, int *count)
 {
 	unsigned int		number;
 	char				*number_str;
@@ -102,7 +102,7 @@ void		print_u(va_list args, t_specifier *specifier, int *count)
 		return ;
 	}
 	len = ft_strlen(number_str);
-	number_str = set_precision(number_str, number, specifier->precision, &len);
+	number_str = set_precision(number_str, specifier->precision, &len);
 	if (specifier->flags & FLAG_PLUS && number > 0)
 	{
 		number_str = pad_left('+', 1, number_str, 1);
@@ -110,7 +110,7 @@ void		print_u(va_list args, t_specifier *specifier, int *count)
 	}
 	if (specifier->precision == 0 && number == 0)
 		number_str[--len] = '\0';
-	number_str = set_width(number_str, number, specifier, &len);
+	number_str = set_width(number_str, specifier, &len);
 	if (number > 0 && len > specifier->width && specifier->flags & FLAG_SPACE)
 		number_str = pad_left(' ', 1, number_str, 1);
 	ft_putstr_fd(number_str, 1);
