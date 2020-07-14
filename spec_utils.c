@@ -6,10 +6,11 @@
 /*   By: asimoes <asimoes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/14 22:00:49 by asimoes           #+#    #+#             */
-/*   Updated: 2020/07/14 22:04:45 by asimoes          ###   ########.fr       */
+/*   Updated: 2020/07/14 22:07:48 by asimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "./libft/libft.h"
 #include "ft_printf.h"
 
 void	get_flags(const char **format, t_specifier *specifier)
