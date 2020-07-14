@@ -6,7 +6,7 @@
 /*   By: asimoes <asimoes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 11:32:06 by asimoes           #+#    #+#             */
-/*   Updated: 2020/07/14 21:44:34 by asimoes          ###   ########.fr       */
+/*   Updated: 2020/07/14 21:46:53 by asimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 
 static char		*set_precision(char *str, t_specifier *s, int *len)
 {
-	if (s->is_precision && s->precision < len && s->precision >= 0)
+	if (s->is_precision && s->precision < *len && s->precision >= 0)
 	{
 		str = ft_substr(str, 0, s->precision);
-		len = s->precision;
+		*len = s->precision;
 	}
 	return (str);
 }
@@ -30,9 +30,9 @@ static char		*set_width(char *str, t_specifier *s, int *len, short int fptr)
 
 	c = (s->flags & FLAG_ZERO) ? '0' : ' ';
 	ptr = (fptr) ? str : NULL;
-	if (s->flags & FLAG_MINUS && s->width > len)
+	if (s->flags & FLAG_MINUS && s->width > *len)
 		str = pad_right(' ', s->width - *len, str, 0);
-	else if (s->width > len)
+	else if (s->width > *len)
 		str = pad_left(c, s->width - *len, str, 0);
 	free(ptr);
 	return (str);
