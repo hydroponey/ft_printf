@@ -6,55 +6,29 @@
 /*   By: asimoes <asimoes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 07:41:21 by asimoes           #+#    #+#             */
-/*   Updated: 2020/07/09 14:00:17 by asimoes          ###   ########.fr       */
+/*   Updated: 2020/07/14 16:07:30 by asimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./libft/libft.h"
 #include "ft_printf.h"
 
-char		*d_pad_left(char c, int n, char *data)
-{
-	char	padding[n + 1];
-	char	*padded_string;
-
-	ft_bzero(padding, n + 1);
-	while (n--)
-		padding[n] = c;
-	padded_string = ft_strjoin(padding, data);
-	free(data);
-	return (padded_string);
-}
-
-char		*d_pad_right(char c, int n, char *data)
-{
-	char	padding[n + 1];
-	char	*padded_string;
-
-	ft_bzero(padding, n + 1);
-	while (n--)
-		padding[n] = c;
-	padded_string = ft_strjoin(data, padding);
-	free(data);
-	return (padded_string);
-}
-
-char		*set_precision(char *num_str, int num, int precision, int *len)
+char		*set_precision(char *num_str, int num, t_specifier *s, int *len)
 {
 	char	*newstr;
 
 	newstr = num_str;
-	if (precision != -1 && precision > *len)
+	if (s->is_precision && s->precision > *len)
 	{
 		if (num < 0)
 		{
-			newstr = pad_left('0', precision - *len + 1, num_str, 1);
+			newstr = pad_left('0', s->precision - *len + 1, num_str, 1);
 			newstr[0] = '-';
-			newstr[precision - *len + 1] = '0';
+			newstr[s->precision - *len + 1] = '0';
 		}
 		else
 		{
-			newstr = pad_left('0', precision - *len, num_str, 1);
+			newstr = pad_left('0', s->precision - *len, num_str, 1);
 		}
 		*len = ft_strlen(newstr);
 	}
@@ -63,7 +37,7 @@ char		*set_precision(char *num_str, int num, int precision, int *len)
 
 char		*set_width(char *str, int number, t_specifier *specifier, int *len)
 {
-	if (*len >= specifier->width)
+	if (!specifier->is_width || *len >= specifier->width)
 		return (str);
 	if (specifier->flags & FLAG_MINUS)
 		str = pad_right(' ', specifier->width - *len, str, 1);
@@ -97,7 +71,7 @@ void		print_d(va_list args, t_specifier *specifier, int *count)
 		return ;
 	}
 	len = ft_strlen(number_str);
-	number_str = set_precision(number_str, number, specifier->precision, &len);
+	number_str = set_precision(number_str, number, specifier, &len);
 	if (specifier->flags & FLAG_PLUS && number > 0)
 	{
 		number_str = pad_left('+', 1, number_str, 1);
