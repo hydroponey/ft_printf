@@ -6,7 +6,7 @@
 /*   By: asimoes <asimoes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/03 11:48:05 by asimoes           #+#    #+#             */
-/*   Updated: 2020/07/14 16:07:18 by asimoes          ###   ########.fr       */
+/*   Updated: 2020/07/14 21:59:10 by asimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,7 @@ void	spec_handler(const char **format, va_list args, int *count)
 		*count = -1;
 		return ;
 	}
-	specifier->flags = 0;
-	specifier->is_width = 0;
-	specifier->width = -1;
-	specifier->is_precision = 0;
-	specifier->precision = -1;
-	specifier->length = -1;
-	specifier->specifier = -1;
-	specifier->character = -1;
+	ft_bzero(specifier, sizeof(t_specifier));
 	(*format)++;
 	if (**format == '\0')
 		return ;
@@ -44,7 +37,9 @@ void	spec_handler(const char **format, va_list args, int *count)
 	get_flags(format, specifier);
 	get_width(format, args, specifier);
 	get_precision(format, args, specifier);
-	if (**format == 'c' || **format == 's' || **format == 'p' || **format == 'd' || **format == 'i' || **format == 'u' || **format == 'x' || **format == 'X')
+	if (**format == 'c' || **format == 's' || **format == 'p' ||
+		**format == 'd' || **format == 'i' || **format == 'u' ||
+		**format == 'x' || **format == 'X')
 	{
 		specifier->specifier = **format;
 		(*format)++;
@@ -80,7 +75,8 @@ void	call_spec_func(va_list args, t_specifier *specifier, int *count)
 
 void	get_flags(const char **format, t_specifier *specifier)
 {
-	while (**format == '-' || **format == '+' || **format == ' ' || **format == '#' || **format == '0')
+	while (**format == '-' || **format == '+' || **format == ' ' ||
+			**format == '#' || **format == '0')
 	{
 		if (**format == '-')
 			specifier->flags ^= FLAG_MINUS;
