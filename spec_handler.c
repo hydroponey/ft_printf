@@ -6,22 +6,19 @@
 /*   By: asimoes <asimoes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/03 11:48:05 by asimoes           #+#    #+#             */
-/*   Updated: 2020/07/14 21:59:46 by asimoes          ###   ########.fr       */
+/*   Updated: 2020/07/14 22:05:19 by asimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./libft/libft.h"
 #include "ft_printf.h"
 
-void	spec_handler(const char **format, va_list args, int *count)
+static t_specifier	*get_specifier_struct(void)
 {
 	t_specifier *specifier;
 
 	if (!(specifier = (t_specifier*)malloc(sizeof(t_specifier))))
-	{
-		*count = -1;
-		return ;
-	}
+		return (NULL);
 	specifier->flags = 0;
 	specifier->is_width = 0;
 	specifier->width = -1;
@@ -30,6 +27,18 @@ void	spec_handler(const char **format, va_list args, int *count)
 	specifier->length = -1;
 	specifier->specifier = -1;
 	specifier->character = -1;
+	return (specifier);
+}
+
+void				spec_handler(const char **format, va_list args, int *count)
+{
+	t_specifier *specifier;
+
+	if (!(specifier = get_specifier_struct()))
+	{
+		*count = -1;
+		return ;
+	}
 	(*format)++;
 	if (**format == '\0')
 		return ;
@@ -44,103 +53,23 @@ void	spec_handler(const char **format, va_list args, int *count)
 	get_flags(format, specifier);
 	get_width(format, args, specifier);
 	get_precision(format, args, specifier);
-	if (**format == 'c' || **format == 's' || **format == 'p' ||
-		**format == 'd' || **format == 'i' || **format == 'u' ||
-		**format == 'x' || **format == 'X')
-	{
-		specifier->specifier = **format;
-		(*format)++;
-	}
-	else if (**format != '\0')
-	{
-		if (**format >= '0' && **format <= '9')
-			specifier->specifier = 'd';
-		else
-			specifier->specifier = 'c';
-		specifier->character = **format;
-		(*format)++;
-	}
+	get_specifier(format, args, specifier);
 	call_spec_func(args, specifier, count);
 	free(specifier);
 }
 
-void	call_spec_func(va_list args, t_specifier *specifier, int *count)
+void				call_spec_func(va_list args, t_specifier *s, int *count)
 {
-	if (specifier->specifier == 'c')
-		print_c(args, specifier, count);
-	if (specifier->specifier == 's')
-		print_s(args, specifier, count);
-	if (specifier->specifier == 'p')
-		print_p(args, specifier, count);
-	if (specifier->specifier == 'd' || specifier->specifier == 'i')
-		print_d(args, specifier, count);
-	if (specifier->specifier == 'u')
-		print_u(args, specifier, count);
-	if (specifier->specifier == 'x' || specifier->specifier == 'X')
-		print_x(args, specifier, count);
-}
-
-void	get_flags(const char **format, t_specifier *specifier)
-{
-	while (**format == '-' || **format == '+' || **format == ' ' ||
-			**format == '#' || **format == '0')
-	{
-		if (**format == '-')
-			specifier->flags ^= FLAG_MINUS;
-		if (**format == '+')
-			specifier->flags ^= FLAG_PLUS;
-		if (**format == ' ')
-			specifier->flags ^= FLAG_SPACE;
-		if (**format == '#')
-			specifier->flags ^= FLAG_OCTO;
-		if (**format == '0')
-			specifier->flags ^= FLAG_ZERO;
-		(*format)++;
-	}
-}
-
-void	get_width(const char **format, va_list args, t_specifier *specifier)
-{
-	if (**format == '*')
-	{
-		specifier->is_width = 1;
-		specifier->width = (int)va_arg(args, int);
-		(*format)++;
-	}
-	else
-	{
-		if (**format >= '0' && **format <= '9')
-		{
-			specifier->is_width = 1;
-			specifier->width = ft_atoi(*format);
-			while (**format >= '0' && **format <= '9')
-				(*format)++;
-		}
-	}
-	if (specifier->is_width && specifier->width < 0)
-	{
-		specifier->width *= -1;
-		if ((specifier->flags & FLAG_MINUS) == 0)
-			specifier->flags ^= FLAG_MINUS;
-	}
-}
-
-void	get_precision(const char **format, va_list args, t_specifier *specifier)
-{
-	if (**format == '.')
-	{
-		specifier->is_precision = 1;
-		(*format)++;
-		if (**format == '*')
-		{
-			specifier->precision = (int)va_arg(args, int);
-			(*format)++;
-		}
-		else
-		{
-			specifier->precision = ft_atoi(*format);
-			while (**format >= '0' && **format <= '9')
-				(*format)++;
-		}
-	}
+	if (s->specifier == 'c')
+		print_c(args, s, count);
+	if (s->specifier == 's')
+		print_s(args, s, count);
+	if (s->specifier == 'p')
+		print_p(args, s, count);
+	if (s->specifier == 'd' || s->specifier == 'i')
+		print_d(args, s, count);
+	if (s->specifier == 'u')
+		print_u(args, s, count);
+	if (s->specifier == 'x' || s->specifier == 'X')
+		print_x(args, s, count);
 }
