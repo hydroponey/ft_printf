@@ -6,14 +6,14 @@
 /*   By: asimoes <asimoes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 11:32:06 by asimoes           #+#    #+#             */
-/*   Updated: 2020/07/14 16:34:48 by asimoes          ###   ########.fr       */
+/*   Updated: 2020/07/14 21:31:13 by asimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./libft/libft.h"
 #include "ft_printf.h"
 
-void	print_s(va_list args, t_specifier *specifier, int *count)
+void	print_s(va_list args, t_specifier *s, int *count)
 {
 	char		*str;
 	char		*tmp;
@@ -33,21 +33,21 @@ void	print_s(va_list args, t_specifier *specifier, int *count)
 		ft_strlcpy(str, "(null)", 7);
 	}
 	len = ft_strlen(str);
-	if (specifier->is_precision && specifier->precision < len)
+	if (s->is_precision && s->precision < len && s->precision >= 0)
 	{
-		str = ft_substr(str, 0, specifier->precision);
-		len = specifier->precision;
+		str = ft_substr(str, 0, s->precision);
+		len = s->precision;
 	}
-	if (specifier->flags & FLAG_MINUS && specifier->width > len)
+	if (s->flags & FLAG_MINUS && s->width > len)
 	{
 		tmp = (free_ptr) ? str : NULL;
-		str = pad_right(' ', specifier->width - len, str, 0);
+		str = pad_right(' ', s->width - len, str, 0);
 		free(tmp);
 	}
-	else if (specifier->width > len)
+	else if (s->width > len)
 	{
 		tmp = (free_ptr) ? str : NULL;
-		str = pad_left((specifier->flags & FLAG_ZERO) ? '0' : ' ', specifier->width - len, str, 0);
+		str = pad_left((s->flags & FLAG_ZERO) ? '0' : ' ', s->width - len, str, 0);
 		free(tmp);
 	}
 	*count += ft_strlen(str);
