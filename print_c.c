@@ -6,14 +6,14 @@
 /*   By: asimoes <asimoes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 07:41:21 by asimoes           #+#    #+#             */
-/*   Updated: 2020/07/09 14:57:27 by asimoes          ###   ########.fr       */
+/*   Updated: 2020/07/14 22:10:48 by asimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./libft/libft.h"
 #include "ft_printf.h"
 
-void		print_nulchar(va_list args, t_specifier *specifier, int *count)
+void		print_nulchar(t_specifier *specifier, int *count)
 {
 	if (specifier->is_width && (specifier->flags & FLAG_MINUS) == 0)
 	{
@@ -40,7 +40,7 @@ void		print_c(va_list args, t_specifier *s, int *count)
 	c = (s->character != -1) ? s->character : (int)va_arg(args, int);
 	if (c == 0)
 	{
-		print_nulchar(args, s, count);
+		print_nulchar(s, count);
 		return ;
 	}
 	if (!(str = malloc(2 * sizeof(char))))
