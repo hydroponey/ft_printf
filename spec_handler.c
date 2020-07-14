@@ -6,7 +6,7 @@
 /*   By: asimoes <asimoes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/03 11:48:05 by asimoes           #+#    #+#             */
-/*   Updated: 2020/07/14 21:59:10 by asimoes          ###   ########.fr       */
+/*   Updated: 2020/07/14 21:59:46 by asimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,14 @@ void	spec_handler(const char **format, va_list args, int *count)
 		*count = -1;
 		return ;
 	}
-	ft_bzero(specifier, sizeof(t_specifier));
+	specifier->flags = 0;
+	specifier->is_width = 0;
+	specifier->width = -1;
+	specifier->is_precision = 0;
+	specifier->precision = -1;
+	specifier->length = -1;
+	specifier->specifier = -1;
+	specifier->character = -1;
 	(*format)++;
 	if (**format == '\0')
 		return ;
