@@ -6,12 +6,23 @@
 /*   By: asimoes <asimoes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 07:41:21 by asimoes           #+#    #+#             */
-/*   Updated: 2020/07/10 20:15:40 by asimoes          ###   ########.fr       */
+/*   Updated: 2020/07/14 21:52:34 by asimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./libft/libft.h"
 #include "ft_printf.h"
+
+static char		*number_zero(void)
+{
+	char	*str;
+
+	if (!(str = malloc(2)))
+		return (NULL);
+	str[0] = '0';
+	str[1] = '\0';
+	return (str);
+}
 
 char			*get_hex_str(unsigned int number, short int capitalize)
 {
@@ -21,13 +32,7 @@ char			*get_hex_str(unsigned int number, short int capitalize)
 	int				temp;
 
 	if (number == 0)
-	{
-		if (!(str = malloc(2)))
-			return (NULL);
-		str[0] = '0';
-		str[1] = '\0';
-		return (str);
-	}
+		return (number_zero());
 	capitalize = (capitalize) ? 55 : 87;
 	if (!(str = malloc(1)))
 		return (NULL);
@@ -59,12 +64,6 @@ static char		*set_width(char *str, unsigned int num, t_specifier *specifier)
 	int len;
 
 	len = ft_strlen(str);
-	if (specifier->is_width && specifier->width < 0)
-	{
-		specifier->width *= -1;
-		if ((specifier->flags & FLAG_MINUS) == 0)
-			specifier->flags ^= FLAG_MINUS;
-	}
 	if (len >= specifier->width)
 		return (str);
 	if (specifier->flags & FLAG_MINUS)
