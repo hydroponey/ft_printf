@@ -6,20 +6,45 @@
 /*   By: asimoes <asimoes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 11:32:06 by asimoes           #+#    #+#             */
-/*   Updated: 2020/07/14 21:31:13 by asimoes          ###   ########.fr       */
+/*   Updated: 2020/07/14 21:44:34 by asimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./libft/libft.h"
 #include "ft_printf.h"
 
-void	print_s(va_list args, t_specifier *s, int *count)
+static char		*set_precision(char *str, t_specifier *s, int *len)
+{
+	if (s->is_precision && s->precision < len && s->precision >= 0)
+	{
+		str = ft_substr(str, 0, s->precision);
+		len = s->precision;
+	}
+	return (str);
+}
+
+static char		*set_width(char *str, t_specifier *s, int *len, short int fptr)
+{
+	char	*ptr;
+	char	c;
+
+	c = (s->flags & FLAG_ZERO) ? '0' : ' ';
+	ptr = (fptr) ? str : NULL;
+	if (s->flags & FLAG_MINUS && s->width > len)
+		str = pad_right(' ', s->width - *len, str, 0);
+	else if (s->width > len)
+		str = pad_left(c, s->width - *len, str, 0);
+	free(ptr);
+	return (str);
+}
+
+void			print_s(va_list args, t_specifier *s, int *count)
 {
 	char		*str;
 	char		*tmp;
 	int			len;
 	short int	free_ptr;
-	
+
 	free_ptr = 0;
 	str = (char*)va_arg(args, char *);
 	if (str == NULL)
@@ -33,23 +58,8 @@ void	print_s(va_list args, t_specifier *s, int *count)
 		ft_strlcpy(str, "(null)", 7);
 	}
 	len = ft_strlen(str);
-	if (s->is_precision && s->precision < len && s->precision >= 0)
-	{
-		str = ft_substr(str, 0, s->precision);
-		len = s->precision;
-	}
-	if (s->flags & FLAG_MINUS && s->width > len)
-	{
-		tmp = (free_ptr) ? str : NULL;
-		str = pad_right(' ', s->width - len, str, 0);
-		free(tmp);
-	}
-	else if (s->width > len)
-	{
-		tmp = (free_ptr) ? str : NULL;
-		str = pad_left((s->flags & FLAG_ZERO) ? '0' : ' ', s->width - len, str, 0);
-		free(tmp);
-	}
+	str = set_precision(str, s, &len);
+	str = set_width(str, s, &len, free_ptr);
 	*count += ft_strlen(str);
 	ft_putstr_fd(str, 1);
 }
