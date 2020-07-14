@@ -6,7 +6,7 @@
 /*   By: asimoes <asimoes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 11:32:06 by asimoes           #+#    #+#             */
-/*   Updated: 2020/07/14 21:46:53 by asimoes          ###   ########.fr       */
+/*   Updated: 2020/07/14 22:12:09 by asimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ static char		*set_width(char *str, t_specifier *s, int *len, short int fptr)
 void			print_s(va_list args, t_specifier *s, int *count)
 {
 	char		*str;
-	char		*tmp;
 	int			len;
 	short int	free_ptr;
 

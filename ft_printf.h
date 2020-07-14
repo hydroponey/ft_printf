@@ -6,7 +6,7 @@
 /*   By: asimoes <asimoes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/03 11:35:07 by asimoes           #+#    #+#             */
-/*   Updated: 2020/07/14 22:05:05 by asimoes          ###   ########.fr       */
+/*   Updated: 2020/07/14 22:11:49 by asimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ char	*pad_right(char c, int n, char *data, short int bFree);
 int		ft_printf(const char *format, ...);
 void	get_flags(const char **format, t_specifier *specifier);
 void	get_width(const char **format, va_list args, t_specifier *specifier);
-void	get_specifier(const char **format, va_list args, t_specifier *specifier);
+void	get_specifier(const char **format, t_specifier *specifier);
 void	get_precision(const char **format, va_list args, t_specifier *specifier);
 int		parse_specifier(const char **format, va_list args, t_specifier **specifier);
 void	print_c(va_list args, t_specifier *specifier, int *count);
