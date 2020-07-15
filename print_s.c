@@ -6,13 +6,14 @@
 /*   By: asimoes <asimoes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 11:32:06 by asimoes           #+#    #+#             */
-/*   Updated: 2020/07/15 14:14:31 by asimoes          ###   ########.fr       */
+/*   Updated: 2020/07/15 14:16:00 by asimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./libft/libft.h"
 #include "ft_printf.h"
 
+/*
 static char		*set_preci(char *str, t_specifier *s, int *len, short int fptr)
 {
 	char	*ptr;
@@ -25,7 +26,7 @@ static char		*set_preci(char *str, t_specifier *s, int *len, short int fptr)
 		free(ptr);
 	}
 	return (str);
-}
+}*/
 
 static char		*set_width(char *str, t_specifier *s, int *len, short int fptr)
 {
