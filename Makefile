@@ -6,7 +6,7 @@
 #    By: asimoes <asimoes@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/03 11:31:41 by asimoes           #+#    #+#              #
-#    Updated: 2020/07/15 11:24:08 by asimoes          ###   ########.fr        #
+#    Updated: 2020/07/15 14:04:59 by asimoes          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ NAME	=	libftprintf.a
 
 $(NAME):
 				gcc -c -Wall -Werror -Wextra libft/*.c -I libft/
-				gcc -c -Wall -Werror -Wextra -fsanitize=address $(SRCS)
+				gcc -c -Wall -Werror -Wextra $(SRCS)
 				ar rc $(NAME) *.o
 				ranlib $(NAME)
 all:			$(NAME)
