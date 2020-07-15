@@ -6,7 +6,7 @@
 /*   By: asimoes <asimoes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 07:41:21 by asimoes           #+#    #+#             */
-/*   Updated: 2020/07/14 22:12:27 by asimoes          ###   ########.fr       */
+/*   Updated: 2020/07/15 11:26:41 by asimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 char		*get_address_str(void *ptr)
 {
 	char			*str;
-	int				i;
 	unsigned long	p0;
 	char			cur[2];
 	int				temp;
@@ -24,7 +23,6 @@ char		*get_address_str(void *ptr)
 	p0 = (unsigned long)ptr;
 	str = malloc(1);
 	str[0] = '\0';
-	i = 0;
 	while (p0 != 0)
 	{
 		temp = p0 % 16;

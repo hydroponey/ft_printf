@@ -6,7 +6,7 @@
 /*   By: asimoes <asimoes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 07:41:21 by asimoes           #+#    #+#             */
-/*   Updated: 2020/07/14 21:52:34 by asimoes          ###   ########.fr       */
+/*   Updated: 2020/07/15 11:27:46 by asimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ static char		*number_zero(void)
 char			*get_hex_str(unsigned int number, short int capitalize)
 {
 	char			*str;
-	int				i;
 	char			cur[2];
 	int				temp;
 
@@ -37,7 +36,6 @@ char			*get_hex_str(unsigned int number, short int capitalize)
 	if (!(str = malloc(1)))
 		return (NULL);
 	str[0] = '\0';
-	i = 0;
 	while (number != 0)
 	{
 		temp = number % 16;
@@ -59,7 +57,7 @@ static char		*set_precision(char *num_str, int precision)
 	return (num_str);
 }
 
-static char		*set_width(char *str, unsigned int num, t_specifier *specifier)
+static char		*set_width(char *str, t_specifier *specifier)
 {
 	int len;
 
@@ -71,14 +69,7 @@ static char		*set_width(char *str, unsigned int num, t_specifier *specifier)
 	else
 	{
 		if (specifier->flags & FLAG_ZERO && specifier->precision == -1)
-		{
 			str = pad_left('0', specifier->width - len, str, 1);
-			if (num < 0)
-			{
-				str[0] = '-';
-				str[specifier->width - len] = '0';
-			}
-		}
 		else
 			str = pad_left(' ', specifier->width - len, str, 1);
 	}
@@ -101,7 +92,7 @@ void			print_x(va_list args, t_specifier *specifier, int *count)
 	str = set_precision(str, specifier->precision);
 	if (specifier->precision == 0 && number == 0)
 		str[--len] = '\0';
-	str = set_width(str, number, specifier);
+	str = set_width(str, specifier);
 	ft_putstr_fd(str, 1);
 	*count += ft_strlen(str);
 }

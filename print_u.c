@@ -6,7 +6,7 @@
 /*   By: asimoes <asimoes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 07:41:21 by asimoes           #+#    #+#             */
-/*   Updated: 2020/07/10 19:33:56 by asimoes          ###   ########.fr       */
+/*   Updated: 2020/07/15 11:25:54 by asimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,15 +41,11 @@ static char			*ft_utoa(unsigned int n)
 		nbr[1] = '\0';
 		return (nbr);
 	}
-	if (n < 0)
-		long_nb *= -1;
 	while (long_nb > 0)
 	{
 		leftcat(nbr, (char)(long_nb % 10) + '0');
 		long_nb /= 10;
 	}
-	if (n < 0)
-		leftcat(nbr, '-');
 	return (nbr);
 }
 
