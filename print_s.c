@@ -6,7 +6,7 @@
 /*   By: asimoes <asimoes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 11:32:06 by asimoes           #+#    #+#             */
-/*   Updated: 2020/07/15 14:07:17 by asimoes          ###   ########.fr       */
+/*   Updated: 2020/07/15 14:10:53 by asimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,13 @@ static char		*set_preci(char *str, t_specifier *s, int *len, short int fptr)
 {
 	char	*ptr;
 
-	ptr = (fptr) ? str : NULL;
 	if (s->is_precision && s->precision < *len && s->precision >= 0)
 	{
+		ptr = (fptr) ? str : NULL;
 		str = ft_substr(str, 0, s->precision);
 		*len = s->precision;
+		free(ptr);
 	}
-	free(ptr);
 	return (str);
 }
 
