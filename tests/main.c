@@ -6,7 +6,7 @@
 /*   By: asimoes <asimoes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/03 11:46:13 by asimoes           #+#    #+#             */
-/*   Updated: 2020/07/08 17:54:28 by asimoes          ###   ########.fr       */
+/*   Updated: 2020/07/16 11:37:37 by asimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,144 +50,101 @@ char	*t_get_address_str(void *ptr)
 
 int main()
 {
-	char	*ptr = "salut ça va";
-	/*printf("[                         DECIMAL                          ]\n");
-	printf("---------------------------WIDTH----------------------------\n");
-	printf("%%10d 1337:\t\t |%10d|\n", 1337);
-	ft_printf("%%10d 1337:\t\t |%10d|\n", 1337);
-	printf("%%-10d 1337:\t\t |%-10d|\n", 1337);
-	ft_printf("%%-10d 1337:\t\t |%-10d|\n", 1337);
-	printf("%%+10d 1337:\t\t |%+10d|\n", 1337);
-	ft_printf("%%+10d 1337:\t\t |%+10d|\n", 1337);
-	printf("%% 10d 1337:\t\t |% 10d|\n", 1337);
-	ft_printf("%% 10d 1337:\t\t |% 10d|\n", 1337);
-	printf("%%010d 1337:\t\t |%010d|\n", 1337);
-	ft_printf("%%010d 1337:\t\t |%010d|\n", 1337);
-	printf("-------------------------DEFAULT---------------------------\n");
-	printf("Default:\t\t\t\t |%d|\n", 1337);
-	ft_printf("Default:\t\t\t\t |%d|\n", 1337);
-	printf("Left-justify:\t\t\t\t |%-d|\n", 1337);
-	ft_printf("Left-justify:\t\t\t\t |%-d|\n", 1337);
-	printf("Preceed by sign:\t\t\t |%+d|\n", 1337);
-	ft_printf("Preceed by sign:\t\t\t |%+d|\n", 1337);
-	printf("Blank space if no sign:\t\t\t |% d|\n", 1337);
-	ft_printf("Blank space if no sign:\t\t\t |% d|\n", 1337);
-	printf("Blank space if no sign with zero flag:\t |%0 d|\n", 1337);
-	ft_printf("Blank space if no sign with zero flag:\t |%0 d|\n", 1337);
-	printf("Left pad zeroes:\t\t\t |%0d|\n", 1337);
-	ft_printf("Left pad zeroes:\t\t\t |%0d|\n", 1337);
-	printf("-------------------------PRECISION--------------------------\n");
-	printf("Default:\t\t\t\t |%.15d|\n", 101214);
-	ft_printf("Default:\t\t\t\t |%.15d|\n", 101214);
-	printf("Left-justify:\t\t\t\t |%-.15d|\n", 101214);
-	ft_printf("Left-justify:\t\t\t\t |%-.15d|\n", 101214);
-	printf("Preceed by sign:\t\t\t |%+.15d|\n", 101214);
-	ft_printf("Preceed by sign:\t\t\t |%+.15d|\n", 101214);
-	printf("Blank space if no sign:\t\t\t |% .15d|\n", 101214);
-	ft_printf("Blank space if no sign:\t\t\t |% .15d|\n", 101214);
-	printf("Left pad zeroes:\t\t\t |%0.15d|\n", 101214);
-	ft_printf("Left pad zeroes:\t\t\t |%0.15d|\n", 101214);
-	printf("Precision zero:\t\t\t\t |%0.0d|\n", 0);
-	ft_printf("Precision zero:\t\t\t\t |%0.0d|\n", 0);
-	printf("Width 10 Precision 5:\t\t\t\t |%10.5d|\n", -216);
-	ft_printf("Width 10 Precision 5:\t\t\t\t |%10.5d|\n", -216);
-	printf("---------------------PRECISION NEGATIVE---------------------\n");
-	printf("Default:\t\t\t\t |%.15d|\n", -101214);
-	ft_printf("Default:\t\t\t\t |%.15d|\n", -101214);
-	printf("Left-justify:\t\t\t\t |%-.15d|\n", -101214);
-	ft_printf("Left-justify:\t\t\t\t |%-.15d|\n", -101214);
-	printf("Preceed by sign:\t\t\t |%+.15d|\n", -101214);
-	ft_printf("Preceed by sign:\t\t\t |%+.15d|\n", -101214);
-	printf("Blank space if no sign:\t\t\t |% .15d|\n", -101214);
-	ft_printf("Blank space if no sign:\t\t\t |% .15d|\n", -101214);
-	printf("Left pad zeroes:\t\t\t |%0.15d|\n", -101214);
-	ft_printf("Left pad zeroes:\t\t\t |%0.15d|\n", -101214);
-	printf("Precision zero:\t\t\t\t |%0.0d|\n", -0);
-	ft_printf("Precision zero:\t\t\t\t |%0.0d|\n", -0);
-	printf("----------------------SMALL PRECISION-----------------------\n");
-	printf("Default:\t\t\t\t |%.3d|\n", 101214);
-	ft_printf("Default:\t\t\t\t |%.3d|\n", 101214);
-	printf("Left-justify:\t\t\t\t |%-.3d|\n", 101214);
-	ft_printf("Left-justify:\t\t\t\t |%-.3d|\n", 101214);
-	printf("Preceed by sign:\t\t\t |%+.3d|\n", 101214);
-	ft_printf("Preceed by sign:\t\t\t |%+.3d|\n", 101214);
-	printf("Blank space if no sign:\t\t\t |% .3d|\n", 101214);
-	ft_printf("Blank space if no sign:\t\t\t |% .3d|\n", 101214);
-	printf("Left pad zeroes:\t\t\t |%0.3d|\n", 101214);
-	ft_printf("Left pad zeroes:\t\t\t |%0.3d|\n", 101214);
-	printf("Precision zero:\t\t\t\t |%0.0d|\n", 0);
-	ft_printf("Precision zero:\t\t\t\t |%0.0d|\n", 0);
-	printf("---------------------WIDTH & PRECISION----------------------\n");
-	printf("Default:\t\t\t\t |%25.15d|\n", 101214);
-	ft_printf("Default:\t\t\t\t |%25.15d|\n", 101214);
-	printf("Left-justify:\t\t\t\t |%-25.15d|\n", 101214);
-	ft_printf("Left-justify:\t\t\t\t |%-25.15d|\n", 101214);
-	printf("Preceed by sign:\t\t\t |%+25.15d|\n", 101214);
-	ft_printf("Preceed by sign:\t\t\t |%+25.15d|\n", 101214);
-	printf("Blank space if no sign:\t\t\t |% 25.15d|\n", 101214);
-	ft_printf("Blank space if no sign:\t\t\t |% 25.15d|\n", 101214);
-	printf("Left pad zeroes:\t\t\t |%025.15d|\n", 101214);
-	ft_printf("Left pad zeroes:\t\t\t |%025.15d|\n", 101214);
-	printf("Precision zero:\t\t\t\t |%025.0d|\n", 0);
-	ft_printf("Precision zero:\t\t\t\t |%025.0d|\n", 0);
-	
-	printf("[                        CHARACTER                         ]\n");
-	printf("---------------------------WIDTH----------------------------\n");
-	printf("%%10c a:\t\t\t |%10c|\n", 'a');
-	ft_printf("%%10c a:\t\t\t |%10c|\n", 'a');
-	printf("%%-10c a:\t\t |%-10c|\n", 'a');
-	ft_printf("%%-10c a:\t\t |%-10c|\n", 'a');
-	printf("%%+10c a:\t\t |%+10c|\n", 'a');
-	ft_printf("%%+10c a:\t\t |%+10c|\n", 'a');
-	printf("%% 10c a:\t\t |% 10c|\n", 'a');
-	ft_printf("%% 10c a:\t\t |% 10c|\n", 'a');
-	printf("%%010c a:\t\t |%010c|\n", 'a');
-	ft_printf("%%010c a:\t\t |%010c|\n", 'a');
-	printf("-------------------------DEFAULT---------------------------\n");
-	printf("Default:\t\t\t\t |%c|\n", 'a');
-	ft_printf("Default:\t\t\t\t |%c|\n", 'a');
-	printf("Left-justify:\t\t\t\t |%-c|\n", 'a');
-	ft_printf("Left-justify:\t\t\t\t |%-c|\n", 'a');
-	printf("Preceed by sign:\t\t\t |%+c|\n", 'a');
-	ft_printf("Preceed by sign:\t\t\t |%+c|\n", 'a');
-	printf("Blank space if no sign:\t\t\t |% c|\n", 'a');
-	ft_printf("Blank space if no sign:\t\t\t |% c|\n", 'a');
-	printf("Blank space if no sign with zero flag:\t |%0 c|\n", 'a');
-	ft_printf("Blank space if no sign with zero flag:\t |%0 c|\n", 'a');
-	printf("Left pad zeroes:\t\t\t |%0c|\n", 'a');
-	ft_printf("Left pad zeroes:\t\t\t |%0c|\n", 'a');
-	printf("-------------------------PRECISION--------------------------\n");
-	printf("Default:\t\t\t\t |%.15c|\n", 'a');
-	ft_printf("Default:\t\t\t\t |%.15c|\n", 'a');
-	printf("Left-justify:\t\t\t\t |%-.15c|\n", 'a');
-	ft_printf("Left-justify:\t\t\t\t |%-.15c|\n", 'a');
-	printf("Preceed by sign:\t\t\t |%+.15c|\n", 'a');
-	ft_printf("Preceed by sign:\t\t\t |%+.15c|\n", 'a');
-	printf("Blank space if no sign:\t\t\t |% .15c|\n", 'a');
-	ft_printf("Blank space if no sign:\t\t\t |% .15c|\n", 'a');
-	printf("Left pad zeroes:\t\t\t |%0.15c|\n", 'a');
-	ft_printf("Left pad zeroes:\t\t\t |%0.15c|\n", 'a');
-	printf("Precision zero:\t\t\t\t |%0.0c|\n", 'a');
-	ft_printf("Precision zero:\t\t\t\t |%0.0c|\n", 'a');
-	printf("---------------------WIDTH & PRECISION----------------------\n");
-	printf("Default:\t\t\t\t |%25.15c|\n", 'a');
-	ft_printf("Default:\t\t\t\t |%25.15c|\n", 'a');
-	printf("Left-justify:\t\t\t\t |%-25.15c|\n", 'a');
-	ft_printf("Left-justify:\t\t\t\t |%-25.15c|\n", 'a');
-	printf("Preceed by sign:\t\t\t |%+25.15c|\n", 'a');
-	ft_printf("Preceed by sign:\t\t\t |%+25.15c|\n", 'a');
-	printf("Blank space if no sign:\t\t\t |% 25.15c|\n", 'a');
-	ft_printf("Blank space if no sign:\t\t\t |% 25.15c|\n", 'a');
-	printf("Left pad zeroes:\t\t\t |%025.15c|\n", 'a');
-	ft_printf("Left pad zeroes:\t\t\t |%025.15c|\n", 'a');
-	printf("Precision zero:\t\t\t\t |%025.0c|\n", 'a');
-	ft_printf("Precision zero:\t\t\t\t |%025.0c|\n", 'a');
-	printf("---------------------------POINTER--------------------------\n");
-	printf("Pointer: %p\n", ptr);
-	ft_printf("Pointer: %p\n", ptr);*/
-	
-	printf("|%.*s|\n", -3, "heqsdqsdllo");
-	ft_printf("|%.*s|\n", -3, "helqsdqsdlo");
-	
+	int	real;
+	int mine;
+
+	// % tests
+	printf("printf: |");
+	real = printf("%04.3%");
+	printf("|\n");
+	ft_printf("ft_printf: |");
+	mine = ft_printf("%04.3%");
+	ft_printf("|\n");
+	printf("printf: %d | ft_printf: %d\n", real, mine);
+	// ----------------------------------------------------------
+	printf("printf: |");
+	real = printf("%04.4%");
+	printf("|\n");
+	ft_printf("ft_printf: |");
+	mine = ft_printf("%04.4%");
+	ft_printf("|\n");
+	printf("printf: %d | ft_printf: %d\n", real, mine);
+	// ----------------------------------------------------------
+	printf("printf: |");
+	real = printf("%04%");
+	printf("|\n");
+	ft_printf("ft_printf: |");
+	mine = ft_printf("%04%");
+	ft_printf("|\n");
+	printf("printf: %d | ft_printf: %d\n", real, mine);
+	// ----------------------------------------------------------
+	printf("printf: |");
+	real = printf("%--4.%");
+	printf("|\n");
+	ft_printf("ft_printf: |");
+	mine = ft_printf("%--4.%");
+	ft_printf("|\n");
+	printf("printf: %d | ft_printf: %d\n", real, mine);
+	// ----------------------------------------------------------
+	printf("printf: |");
+	real = printf("%--4.*%", -4);
+	printf("|\n");
+	ft_printf("ft_printf: |");
+	mine = ft_printf("%--4.*%", -4);
+	ft_printf("|\n");
+	printf("printf: %d | ft_printf: %d\n", real, mine);
+	// ----------------------------------------------------------
+	printf("printf: |");
+	real = printf("%%");
+	printf("|\n");
+	ft_printf("ft_printf: |");
+	mine = ft_printf("%%");
+	ft_printf("|\n");
+	printf("printf: %d | ft_printf: %d\n", real, mine);
+	// ----------------------------------------------------------
+	printf("printf: |");
+	real = printf("%5%");
+	printf("|\n");
+	ft_printf("ft_printf: |");
+	mine = ft_printf("%5%");
+	ft_printf("|\n");
+	printf("printf: %d | ft_printf: %d\n", real, mine);
+	// ----------------------------------------------------------
+	printf("printf: |");
+	real = printf("%-5%");
+	printf("|\n");
+	ft_printf("ft_printf: |");
+	mine = ft_printf("%-5%");
+	ft_printf("|\n");
+	printf("printf: %d | ft_printf: %d\n", real, mine);
+	// ----------------------------------------------------------
+	printf("printf: |");
+	real = printf("%05%");
+	printf("|\n");
+	ft_printf("ft_printf: |");
+	mine = ft_printf("%05%");
+	ft_printf("|\n");
+	printf("printf: %d | ft_printf: %d\n", real, mine);
+	// ----------------------------------------------------------
+	printf("printf: |");
+	real = printf("%-05%");
+	printf("|\n");
+	ft_printf("ft_printf: |");
+	mine = ft_printf("%-05%");
+	ft_printf("|\n");
+	printf("printf: %d | ft_printf: %d\n", real, mine);
+	// ----------------------------------------------------------
+
+	//
+	/*printf("|%--2.4%|");
+	ft_printf(" - |%--2.4%|\n");
+	printf("|%--2%|");
+	ft_printf(" - |%--2%|\n");
+	printf("|%--1.%|");
+	ft_printf(" - |%--1.%|\n");
+	printf("|%--1.*%|", -4);
+	ft_printf(" - |%--1.*%|\n", -4);
+	printf("|%--1.*%|", -3);
+	ft_printf(" - |%--1.*%|\n", -3);*/
 	return (0);
 }
