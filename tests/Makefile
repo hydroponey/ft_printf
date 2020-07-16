@@ -18,7 +18,8 @@ SRCS	=	main.c\
 			../print_x.c\
 			../padding.c\
 			../libft/ft_atoi.c\
-			../spec_handler.c
+			../spec_handler.c\
+			../spec_utils.c
 OBJ		=	$(SRCS:.c=.o)
 
 all:		$(SRCS)
