@@ -6,7 +6,7 @@
 /*   By: asimoes <asimoes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/03 11:46:13 by asimoes           #+#    #+#             */
-/*   Updated: 2020/07/17 17:20:19 by asimoes          ###   ########.fr       */
+/*   Updated: 2020/07/17 22:26:41 by asimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,20 @@ char	*t_get_address_str(void *ptr)
 
 int main()
 {
-	char *ptr = "salut";
+	void *ptr = 0x7f93b1402710;
 	int	real;
 	int mine;
+
+	
+	printf("printf:\t\t|");
+	real = printf("%15p", ptr);
+	printf("|\t%d\n", real);
+	ft_printf("ft_printf:\t|");
+	mine = ft_printf("%15p", ptr);
+	ft_printf("|\t%d\n", mine);
+	printf("---------------------------------------------------\n");
+
+	return (0);
 
 	// % tests
 	printf("printf:\t\t|");
