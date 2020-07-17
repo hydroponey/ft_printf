@@ -6,7 +6,7 @@
 /*   By: asimoes <asimoes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/03 11:46:13 by asimoes           #+#    #+#             */
-/*   Updated: 2020/07/16 22:41:59 by asimoes          ###   ########.fr       */
+/*   Updated: 2020/07/17 15:45:59 by asimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ int main()
 	ft_printf("ft_printf:\t|");
 	mine = ft_printf("%04.3%");
 	ft_printf("|\t%d\n", mine);
+	printf("---------------------------------------------------\n");
 	// ----------------------------------------------------------
 	printf("printf:\t\t|");
 	real = printf("%04.4%");
@@ -69,6 +70,7 @@ int main()
 	ft_printf("ft_printf:\t|");
 	mine = ft_printf("%04.4%");
 	ft_printf("|\t%d\n", mine);
+	printf("---------------------------------------------------\n");
 	// ----------------------------------------------------------
 	printf("printf:\t\t|");
 	real = printf("%04%");
@@ -76,6 +78,7 @@ int main()
 	ft_printf("ft_printf:\t|");
 	mine = ft_printf("%04%");
 	ft_printf("|\t%d\n", mine);
+	printf("---------------------------------------------------\n");
 	// ----------------------------------------------------------
 	printf("printf:\t\t|");
 	real = printf("%--4.%");
@@ -83,6 +86,7 @@ int main()
 	ft_printf("ft_printf:\t|");
 	mine = ft_printf("%--4.%");
 	ft_printf("|\t%d\n", mine);
+	printf("---------------------------------------------------\n");
 	// ----------------------------------------------------------
 	printf("printf:\t\t|");
 	real = printf("%--4.*%", -4);
@@ -90,6 +94,7 @@ int main()
 	ft_printf("ft_printf:\t|");
 	mine = ft_printf("%--4.*%", -4);
 	ft_printf("|\t%d\n", mine);
+	printf("---------------------------------------------------\n");
 	// ----------------------------------------------------------
 	printf("printf:\t\t|");
 	real = printf("%%");
@@ -97,6 +102,7 @@ int main()
 	ft_printf("ft_printf:\t|");
 	mine = ft_printf("%%");
 	ft_printf("|\t%d\n", mine);
+	printf("---------------------------------------------------\n");
 	// ----------------------------------------------------------
 	printf("printf:\t\t|");
 	real = printf("%5%");
@@ -104,6 +110,7 @@ int main()
 	ft_printf("ft_printf:\t|");
 	mine = ft_printf("%5%");
 	ft_printf("|\t%d\n", mine);
+	printf("---------------------------------------------------\n");
 	// ----------------------------------------------------------
 	printf("printf:\t\t|");
 	real = printf("%-5%");
@@ -111,6 +118,7 @@ int main()
 	ft_printf("ft_printf:\t|");
 	mine = ft_printf("%-5%");
 	ft_printf("|\t%d\n", mine);
+	printf("---------------------------------------------------\n");
 	// ----------------------------------------------------------
 	printf("printf:\t\t|");
 	real = printf("%05%");
@@ -118,6 +126,7 @@ int main()
 	ft_printf("ft_printf:\t|");
 	mine = ft_printf("%05%");
 	ft_printf("|\t%d\n", mine);
+	printf("---------------------------------------------------\n");
 	// ----------------------------------------------------------
 	printf("printf:\t\t|");
 	real = printf("%-05%");
@@ -125,6 +134,7 @@ int main()
 	ft_printf("ft_printf:\t|");
 	mine = ft_printf("%-05%");
 	ft_printf("|\t%d\n", mine);
+	printf("---------------------------------------------------\n");
 	// ----------------------------------------------------------
 	printf("printf:\t\t|");
 	real = printf("%5%");
@@ -132,6 +142,7 @@ int main()
 	ft_printf("ft_printf:\t|");
 	mine = ft_printf("%5%");
 	ft_printf("|\t%d\n", mine);
+	printf("---------------------------------------------------\n");
 	// ----------------------------------------------------------
 	printf("printf:\t\t|");
 	real = printf("%-5%");
@@ -139,6 +150,7 @@ int main()
 	ft_printf("ft_printf:\t|");
 	mine = ft_printf("%-5%");
 	ft_printf("|\t%d\n", mine);
+	printf("---------------------------------------------------\n");
 	// ----------------------------------------------------------
 	printf("printf:\t\t|");
 	real = printf("%05%");
@@ -146,6 +158,7 @@ int main()
 	ft_printf("ft_printf:\t|");
 	mine = ft_printf("%05%");
 	ft_printf("|\t%d\n", mine);
+	printf("---------------------------------------------------\n");
 	// ----------------------------------------------------------
 	printf("printf:\t\t|");
 	real = printf("%-05%");
@@ -153,6 +166,7 @@ int main()
 	ft_printf("ft_printf:\t|");
 	mine = ft_printf("%-05%");
 	ft_printf("|\t%d\n", mine);
+	printf("---------------------------------------------------\n");
 
 	// %s tests
 	printf("printf:\t\t|");
@@ -161,6 +175,7 @@ int main()
 	ft_printf("ft_printf:\t|");
 	mine = ft_printf("%16.16s", "abc");
 	ft_printf("|\t%d\n", mine);
+	printf("---------------------------------------------------\n");
 	// ----------------------------------------------------------
 	printf("printf:\t\t|");
 	real = printf("%16s", "abc");
@@ -168,6 +183,7 @@ int main()
 	ft_printf("ft_printf:\t|");
 	mine = ft_printf("%16s", "abc");
 	ft_printf("|\t%d\n", mine);
+	printf("---------------------------------------------------\n");
 	// ----------------------------------------------------------
 	printf("printf:\t\t|");
 	real = printf("%--16.s", "abc");
@@ -175,6 +191,7 @@ int main()
 	ft_printf("ft_printf:\t|");
 	mine = ft_printf("%--16.s", "abc");
 	ft_printf("|\t%d\n", mine);
+	printf("---------------------------------------------------\n");
 	
 	
 	// %p tests
@@ -184,6 +201,7 @@ int main()
 	ft_printf("ft_printf:\t|");
 	mine = ft_printf("%-16.p", &ptr);
 	ft_printf("|\t%d\n", mine);
+	printf("---------------------------------------------------\n");
 	// ----------------------------------------------------------
 	printf("printf:\t\t|");
 	real = printf("%-16.p", NULL);
@@ -191,6 +209,7 @@ int main()
 	ft_printf("ft_printf:\t|");
 	mine = ft_printf("%-16.p", NULL);
 	ft_printf("|\t%d\n", mine);
+	printf("---------------------------------------------------\n");
 	// ----------------------------------------------------------
 	printf("printf:\t\t|");
 	real = printf("%-16p", &ptr);
@@ -198,6 +217,7 @@ int main()
 	ft_printf("ft_printf:\t|");
 	mine = ft_printf("%-16p", &ptr);
 	ft_printf("|\t%d\n", mine);
+	printf("---------------------------------------------------\n");
 	// ----------------------------------------------------------
 	printf("printf:\t\t|");
 	real = printf("%-15.p", &ptr);
@@ -205,6 +225,7 @@ int main()
 	ft_printf("ft_printf:\t|");
 	mine = ft_printf("%-15.p", &ptr);
 	ft_printf("|\t%d\n", mine);
+	printf("---------------------------------------------------\n");
 
 
 	return (0);
