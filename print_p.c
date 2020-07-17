@@ -6,7 +6,7 @@
 /*   By: asimoes <asimoes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 07:41:21 by asimoes           #+#    #+#             */
-/*   Updated: 2020/07/17 17:30:12 by asimoes          ###   ########.fr       */
+/*   Updated: 2020/07/17 17:31:37 by asimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,11 @@ char		*p_set_precision(char *str, void *ptr, t_specifier *specifier)
 	len = ft_strlen(str);
 	if (specifier->is_precision)
 	{
-		if (ptr != NULL && specifier->precision == 0)
+		/*if (ptr != NULL && specifier->precision == 0)
 		{
 			str[0] = '\0';
 			return (str);
-		}
+		}*/
 		if (specifier->precision > len)
 			str = pad_left('0', specifier->precision - len, str, 1);
 	}
