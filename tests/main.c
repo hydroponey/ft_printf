@@ -6,7 +6,7 @@
 /*   By: asimoes <asimoes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/03 11:46:13 by asimoes           #+#    #+#             */
-/*   Updated: 2020/07/17 16:21:19 by asimoes          ###   ########.fr       */
+/*   Updated: 2020/07/17 16:54:20 by asimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -198,10 +198,10 @@ int main()
 	// WRONG------------------------------------------------------
 	printf("printf:\t\t|");
 	real = printf("%-16.p", &ptr);
-	printf("|\t%d\tWRONG\n", real);
+	printf("|\t%d\t\033[0;31WRONG\n", real);
 	ft_printf("ft_printf:\t|");
 	mine = ft_printf("%-16.p", &ptr);
-	ft_printf("|\t%d\tWRONG\n", mine);
+	ft_printf("|\t%d\t\033[0;31WRONG\n", mine);
 	printf("---------------------------------------------------\n");
 	// ----------------------------------------------------------
 	printf("printf:\t\t|");
@@ -222,10 +222,10 @@ int main()
 	// WRONG------------------------------------------------------
 	printf("printf:\t\t|");
 	real = printf("%-15.p", &ptr);
-	printf("|\t%d\tWRONG\n", real);
+	printf("|\t%d\t\033[0;31WRONG\n", real);
 	ft_printf("ft_printf:\t|");
 	mine = ft_printf("%-15.p", &ptr);
-	ft_printf("|\t%d\tWRONG\n", mine);
+	ft_printf("|\t%d\t\033[0;31WRONG\n", mine);
 	printf("---------------------------------------------------\n");
 
 
