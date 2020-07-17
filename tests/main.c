@@ -6,7 +6,7 @@
 /*   By: asimoes <asimoes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/03 11:46:13 by asimoes           #+#    #+#             */
-/*   Updated: 2020/07/17 16:56:50 by asimoes          ###   ########.fr       */
+/*   Updated: 2020/07/17 17:20:19 by asimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -225,6 +225,54 @@ int main()
 	printf("|\t%d\t\033[0;31mWRONG\033[0m\n", real);
 	ft_printf("ft_printf:\t|");
 	mine = ft_printf("%-15.p", &ptr);
+	ft_printf("|\t%d\t\033[0;31mWRONG\033[0m\n", mine);
+	printf("---------------------------------------------------\n");
+	// WRONG------------------------------------------------------
+	printf("printf:\t\t|");
+	real = printf("%.p", NULL);
+	printf("|\t%d\t\033[0;31mWRONG\033[0m\n", real);
+	ft_printf("ft_printf:\t|");
+	mine = ft_printf("%.p", NULL);
+	ft_printf("|\t%d\t\033[0;31mWRONG\033[0m\n", mine);
+	printf("---------------------------------------------------\n");
+	// WRONG------------------------------------------------------
+	printf("printf:\t\t|");
+	real = printf("%5.p", NULL);
+	printf("|\t%d\t\033[0;31mWRONG\033[0m\n", real);
+	ft_printf("ft_printf:\t|");
+	mine = ft_printf("%5.p", NULL);
+	ft_printf("|\t%d\t\033[0;31mWRONG\033[0m\n", mine);
+	printf("---------------------------------------------------\n");
+	// WRONG------------------------------------------------------
+	printf("printf:\t\t|");
+	real = printf("%2.p", NULL);
+	printf("|\t%d\t\033[0;31mWRONG\033[0m\n", real);
+	ft_printf("ft_printf:\t|");
+	mine = ft_printf("%2.p", NULL);
+	ft_printf("|\t%d\t\033[0;31mWRONG\033[0m\n", mine);
+	printf("---------------------------------------------------\n");
+	// WRONG------------------------------------------------------
+	printf("printf:\t\t|");
+	real = printf("%2.9p", NULL);
+	printf("|\t%d\t\033[0;31mWRONG\033[0m\n", real);
+	ft_printf("ft_printf:\t|");
+	mine = ft_printf("%2.9p", NULL);
+	ft_printf("|\t%d\t\033[0;31mWRONG\033[0m\n", mine);
+	printf("---------------------------------------------------\n");
+	// WRONG------------------------------------------------------
+	printf("printf:\t\t|");
+	real = printf("%.5p", NULL);
+	printf("|\t%d\t\033[0;31mWRONG\033[0m\n", real);
+	ft_printf("ft_printf:\t|");
+	mine = ft_printf("%.5p", NULL);
+	ft_printf("|\t%d\t\033[0;31mWRONG\033[0m\n", mine);
+	printf("---------------------------------------------------\n");
+	// WRONG------------------------------------------------------
+	printf("printf:\t\t|");
+	real = printf("%.0p", NULL);
+	printf("|\t%d\t\033[0;31mWRONG\033[0m\n", real);
+	ft_printf("ft_printf:\t|");
+	mine = ft_printf("%.0p", NULL);
 	ft_printf("|\t%d\t\033[0;31mWRONG\033[0m\n", mine);
 	printf("---------------------------------------------------\n");
 
