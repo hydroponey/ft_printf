@@ -6,7 +6,7 @@
 /*   By: asimoes <asimoes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 07:41:21 by asimoes           #+#    #+#             */
-/*   Updated: 2020/07/17 17:28:38 by asimoes          ###   ########.fr       */
+/*   Updated: 2020/07/17 17:30:12 by asimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,18 +34,18 @@ char		*get_address_str(void *ptr)
 	return (str);
 }
 
-char		*p_set_precision(char *str, t_specifier *specifier)
+char		*p_set_precision(char *str, void *ptr, t_specifier *specifier)
 {
 	int len;
 
 	len = ft_strlen(str);
 	if (specifier->is_precision)
 	{
-		/*if (specifier->precision == 0)
+		if (ptr != NULL && specifier->precision == 0)
 		{
 			str[0] = '\0';
 			return (str);
-		}*/
+		}
 		if (specifier->precision > len)
 			str = pad_left('0', specifier->precision - len, str, 1);
 	}
@@ -92,7 +92,7 @@ void		print_p(va_list args, t_specifier *specifier, int *count)
 	{
 		str = get_address_str(ptr);
 	}
-	str = p_set_precision(str, specifier);
+	str = p_set_precision(str, ptr, specifier);
 	str = ft_strjoin("0x", str);
 	str = p_set_width(str, specifier);
 	ft_putstr_fd(str, 1);
