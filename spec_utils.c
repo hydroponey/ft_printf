@@ -6,7 +6,7 @@
 /*   By: asimoes <asimoes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/14 22:00:49 by asimoes           #+#    #+#             */
-/*   Updated: 2020/07/14 22:11:42 by asimoes          ###   ########.fr       */
+/*   Updated: 2020/07/20 15:39:39 by asimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,15 @@ void	get_flags(const char **format, t_specifier *specifier)
 	while (**format == '-' || **format == '+' || **format == ' ' ||
 			**format == '#' || **format == '0')
 	{
-		if (**format == '-')
+		if (**format == '-' && (specifier->flags & FLAG_MINUS) == 0)
 			specifier->flags ^= FLAG_MINUS;
-		if (**format == '+')
+		if (**format == '+' && (specifier->flags & FLAG_PLUS) == 0)
 			specifier->flags ^= FLAG_PLUS;
-		if (**format == ' ')
+		if (**format == ' ' && (specifier->flags & FLAG_SPACE) == 0)
 			specifier->flags ^= FLAG_SPACE;
-		if (**format == '#')
+		if (**format == '#' && (specifier->flags & FLAG_OCTO) == 0)
 			specifier->flags ^= FLAG_OCTO;
-		if (**format == '0')
+		if (**format == '0' && (specifier->flags & FLAG_ZERO) == 0)
 			specifier->flags ^= FLAG_ZERO;
 		(*format)++;
 	}
