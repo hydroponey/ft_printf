@@ -6,7 +6,7 @@
 /*   By: asimoes <asimoes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 07:41:21 by asimoes           #+#    #+#             */
-/*   Updated: 2020/07/16 22:30:26 by asimoes          ###   ########.fr       */
+/*   Updated: 2020/07/20 15:52:57 by asimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 void		print_nulchar(t_specifier *specifier, int *count)
 {
+	printf("nulchar width: %d\nFLAG_MINUS: %d\n", specifier->width, specifier->flags & FLAG_MINUS);
 	if (specifier->is_width && (specifier->flags & FLAG_MINUS) == 0)
 	{
 		while (--specifier->width)
