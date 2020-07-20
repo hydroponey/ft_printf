@@ -6,7 +6,7 @@
 /*   By: asimoes <asimoes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 07:41:21 by asimoes           #+#    #+#             */
-/*   Updated: 2020/07/20 15:33:37 by asimoes          ###   ########.fr       */
+/*   Updated: 2020/07/20 15:34:22 by asimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ char		*p_set_width(char *str, t_specifier *specifier)
 		if ((specifier->flags & FLAG_MINUS) == 0)
 			specifier->flags ^= FLAG_MINUS;
 	}*/
+	printf("p_set_width:\n\tspecifier->is_width: %d\n\tlen: %d\n\tspecifier->width: %d\n\tFLAG_MINUS: %d\n", specifier->is_width, len, specifier->width, specifier->flags & FLAG_MINUS);
 	if (specifier->is_width && len < specifier->width)
 	{
 		if (specifier->flags & FLAG_MINUS)
@@ -96,6 +97,5 @@ void		print_p(va_list args, t_specifier *specifier, int *count)
 	str = ft_strjoin("0x", str);
 	str = p_set_width(str, specifier);
 	ft_putstr_fd(str, 1);
-	printf("\n\tspecifier->is_width: %d\n\tlen: %d\n\tspecifier->width: %d\n\tFLAG_MINUS: %d\n", specifier->is_width, len, specifier->width, specifier->flags & FLAG_MINUS);
 	*count += ft_strlen(str);
 }
