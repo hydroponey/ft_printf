@@ -6,7 +6,7 @@
 /*   By: asimoes <asimoes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 07:41:21 by asimoes           #+#    #+#             */
-/*   Updated: 2020/07/17 22:22:08 by asimoes          ###   ########.fr       */
+/*   Updated: 2020/07/20 15:25:42 by asimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,12 +57,12 @@ char		*p_set_width(char *str, t_specifier *specifier)
 	int len;
 
 	len = ft_strlen(str);
-	if (specifier->is_width && specifier->width < 0)
+	/*if (specifier->is_width && specifier->width < 0)
 	{
 		specifier->width *= -1;
 		if ((specifier->flags & FLAG_MINUS) == 0)
 			specifier->flags ^= FLAG_MINUS;
-	}
+	}*/
 	if (specifier->is_width && len < specifier->width)
 	{
 		if (specifier->flags & FLAG_MINUS)
