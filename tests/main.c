@@ -6,7 +6,7 @@
 /*   By: asimoes <asimoes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/03 11:46:13 by asimoes           #+#    #+#             */
-/*   Updated: 2020/07/17 22:29:02 by asimoes          ###   ########.fr       */
+/*   Updated: 2020/07/20 15:24:26 by asimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,12 +57,14 @@ int main()
 
 	
 	printf("printf:\t\t|");
+	printf("specifier:\t|%%15p|\n");
 	real = printf("%15p", ptr);
 	printf("|\t%d\n", real);
 	ft_printf("ft_printf:\t|");
 	mine = ft_printf("%15p", ptr);
 	ft_printf("|\t%d\n", mine);
 	printf("---------------------------------------------------\n");
+	printf("specifier:\t|%%16.p|\n");
 	printf("printf:\t\t|");
 	real = printf("%16.p", ptr);
 	printf("|\t%d\n", real);
@@ -70,6 +72,7 @@ int main()
 	mine = ft_printf("%16.p", ptr);
 	ft_printf("|\t%d\n", mine);
 	printf("---------------------------------------------------\n");
+	printf("specifier:\t|%%16p|\n");
 	printf("printf:\t\t|");
 	real = printf("%16p", ptr);
 	printf("|\t%d\n", real);
@@ -77,6 +80,7 @@ int main()
 	mine = ft_printf("%16p", ptr);
 	ft_printf("|\t%d\n", mine);
 	printf("---------------------------------------------------\n");
+	printf("specifier:\t|%%--16.p|\n");
 	printf("printf:\t\t|");
 	real = printf("%--16.p", ptr);
 	printf("|\t%d\n", real);
@@ -84,6 +88,7 @@ int main()
 	mine = ft_printf("%--16.p", ptr);
 	ft_printf("|\t%d\n", mine);
 	printf("---------------------------------------------------\n");
+	printf("specifier:\t|%%--16p|\n");
 	printf("printf:\t\t|");
 	real = printf("%--16p", ptr);
 	printf("|\t%d\n", real);
@@ -91,6 +96,7 @@ int main()
 	mine = ft_printf("%--16p", ptr);
 	ft_printf("|\t%d\n", mine);
 	printf("---------------------------------------------------\n");
+	printf("specifier:\t|%%--4p|\n");
 	printf("printf:\t\t|");
 	real = printf("%--4p", NULL);
 	printf("|\t%d\n", real);
@@ -98,6 +104,7 @@ int main()
 	mine = ft_printf("%--4p", NULL);
 	ft_printf("|\t%d\n", mine);
 	printf("---------------------------------------------------\n");
+	printf("specifier:\t|%%--3.p|\n");
 	printf("printf:\t\t|");
 	real = printf("%--3.p", NULL);
 	printf("|\t%d\n", real);
