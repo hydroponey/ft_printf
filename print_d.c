@@ -6,7 +6,7 @@
 /*   By: asimoes <asimoes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 07:41:21 by asimoes           #+#    #+#             */
-/*   Updated: 2020/07/20 17:07:23 by asimoes          ###   ########.fr       */
+/*   Updated: 2020/07/20 20:14:12 by asimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ char		*set_precision(char *num_str, int num, t_specifier *s, int *len)
 	return (newstr);
 }
 
-char		*set_width(char *str, int number, t_specifier *specifier, int *len)
+char		*set_width(char *str, int number, t_specifier *specifier, int num_len, int *len)
 {
 	if (!specifier->is_width || *len >= specifier->width)
 		return (str);
@@ -45,7 +45,7 @@ char		*set_width(char *str, int number, t_specifier *specifier, int *len)
 		str = pad_right(' ', specifier->width - *len, str, 1);
 	else
 	{
-		if (specifier->flags & FLAG_ZERO && specifier->is_precision == 0)
+		if (specifier->flags & FLAG_ZERO && specifier->is_precision == 0 && num_len < specifier->precision)
 		{
 			str = pad_left('0', specifier->width - *len, str, 1);
 			if (number < 0)
@@ -65,6 +65,7 @@ void		print_d(va_list args, t_specifier *specifier, int *count)
 	int		number;
 	char	*number_str;
 	int		len;
+	int		num_len;
 
 	number = (int)va_arg(args, int);
 	if (!(number_str = ft_itoa(number)))
@@ -73,6 +74,7 @@ void		print_d(va_list args, t_specifier *specifier, int *count)
 		return ;
 	}
 	len = ft_strlen(number_str);
+	num_len = len;
 	number_str = set_precision(number_str, number, specifier, &len);
 	if (specifier->flags & FLAG_PLUS && number > 0)
 	{
@@ -81,7 +83,7 @@ void		print_d(va_list args, t_specifier *specifier, int *count)
 	}
 	if (specifier->precision == 0 && number == 0)
 		number_str[--len] = '\0';
-	number_str = set_width(number_str, number, specifier, &len);
+	number_str = set_width(number_str, number, specifier, num_len, &len);
 	if (number > 0 && len > specifier->width && specifier->flags & FLAG_SPACE)
 		number_str = pad_left(' ', 1, number_str, 1);
 	ft_putstr_fd(number_str, 1);
