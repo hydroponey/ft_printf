@@ -6,7 +6,7 @@
 /*   By: asimoes <asimoes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 07:41:21 by asimoes           #+#    #+#             */
-/*   Updated: 2020/07/20 23:28:30 by asimoes          ###   ########.fr       */
+/*   Updated: 2020/07/20 23:31:53 by asimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,9 @@ static char			*set_width(char *str, t_specifier *specifier, int *len)
 			str = pad_right(' ', specifier->width - *len, str, 1);
 		else
 		{
-			if (specifier->flags & FLAG_ZERO && specifier->precision == -1)
+			if (specifier->flags & FLAG_ZERO &&
+			(specifier->is_precision == 0 || (specifier->is_precision == 1
+			&& specifier->precision < 0)))
 				str = pad_left('0', specifier->width - *len, str, 1);
 			else
 				str = pad_left(' ', specifier->width - *len, str, 1);
