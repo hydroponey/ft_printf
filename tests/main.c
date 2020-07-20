@@ -6,7 +6,7 @@
 /*   By: asimoes <asimoes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/03 11:46:13 by asimoes           #+#    #+#             */
-/*   Updated: 2020/07/20 16:21:56 by asimoes          ###   ########.fr       */
+/*   Updated: 2020/07/20 17:06:21 by asimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,6 +149,54 @@ int main()
 	printf("|\t%d\n", real);
 	ft_printf("ft_printf:\t|");
 	mine = ft_printf("%04.*d", -1, 198);
+	ft_printf("|\t%d\n", mine);
+	printf("---------------------------------------------------\n");
+	printf("specifier:\t|%%08.5d| %d\n", 34);
+	printf("printf:\t\t|");
+	real = printf("%08.5d", 34);
+	printf("|\t%d\n", real);
+	ft_printf("ft_printf:\t|");
+	mine = ft_printf("%08.5d", 34);
+	ft_printf("|\t%d\n", mine);
+	printf("---------------------------------------------------\n");
+	printf("specifier:\t|%%010.5d| %d\n", -216);
+	printf("printf:\t\t|");
+	real = printf("%010.5d", -216);
+	printf("|\t%d\n", real);
+	ft_printf("ft_printf:\t|");
+	mine = ft_printf("%010.5d", -216);
+	ft_printf("|\t%d\n", mine);
+	printf("---------------------------------------------------\n");
+	printf("specifier:\t|%%08.5d| %d\n", 0);
+	printf("printf:\t\t|");
+	real = printf("%08.5d", 0);
+	printf("|\t%d\n", real);
+	ft_printf("ft_printf:\t|");
+	mine = ft_printf("%08.5d", 0);
+	ft_printf("|\t%d\n", mine);
+	printf("---------------------------------------------------\n");
+	printf("specifier:\t|%%08.3d| %d\n", 8375);
+	printf("printf:\t\t|");
+	real = printf("%08.3d", 8375);
+	printf("|\t%d\n", real);
+	ft_printf("ft_printf:\t|");
+	mine = ft_printf("%08.3d", 8375);
+	ft_printf("|\t%d\n", mine);
+	printf("---------------------------------------------------\n");
+	printf("specifier:\t|%%08.3d| %d\n", -8473);
+	printf("printf:\t\t|");
+	real = printf("%08.3d", -8473);
+	printf("|\t%d\n", real);
+	ft_printf("ft_printf:\t|");
+	mine = ft_printf("%08.3d", -8473);
+	ft_printf("|\t%d\n", mine);
+	printf("---------------------------------------------------\n");
+	printf("specifier:\t|%%08.5i| %d\n", 34);
+	printf("printf:\t\t|");
+	real = printf("%08.5i", 34);
+	printf("|\t%d\n", real);
+	ft_printf("ft_printf:\t|");
+	mine = ft_printf("%08.5i", 34);
 	ft_printf("|\t%d\n", mine);
 	printf("---------------------------------------------------\n");
 
