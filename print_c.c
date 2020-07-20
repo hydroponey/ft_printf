@@ -6,7 +6,7 @@
 /*   By: asimoes <asimoes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 07:41:21 by asimoes           #+#    #+#             */
-/*   Updated: 2020/07/20 23:36:05 by asimoes          ###   ########.fr       */
+/*   Updated: 2020/07/20 23:37:19 by asimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void		print_c(va_list args, t_specifier *s, int *count)
 	char	*str;
 	int		c;
 
-	/*c = (s->character != -1) ? s->character : (int)va_arg(args, int);
+	c = (s->character != -1) ? s->character : (int)va_arg(args, int);
 	if (c == 0)
 	{
 		print_nulchar(s, count);
@@ -56,5 +56,5 @@ void		print_c(va_list args, t_specifier *s, int *count)
 		str = pad_left(s->flags & FLAG_ZERO ? '0' : ' ', s->width - 1, str, 1);
 	ft_putstr_fd(str, 1);
 	*count += ft_strlen(str);
-	free(str);*/
+	free(str);
 }
