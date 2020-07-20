@@ -6,7 +6,7 @@
 /*   By: asimoes <asimoes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 07:41:21 by asimoes           #+#    #+#             */
-/*   Updated: 2020/07/20 23:08:04 by asimoes          ###   ########.fr       */
+/*   Updated: 2020/07/20 23:09:47 by asimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,8 @@ char		*set_width(char *str, int number, t_specifier *specifier, int num_len, int
 		str = pad_right(' ', specifier->width - *len, str, 1);
 	else
 	{
-		if (specifier->flags & FLAG_ZERO) //  && (specifier->is_precision == 0 || num_len > specifier->precision)
+		if (specifier->flags & FLAG_ZERO  && specifier->is_precision == 0 && specifier->precision > 0)
 		{
-			printf("precision: %d\n", specifier->precision);
 			str = pad_left('0', specifier->width - *len, str, 1);
 			if (number < 0)
 			{
