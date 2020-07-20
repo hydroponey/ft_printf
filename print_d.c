@@ -6,7 +6,7 @@
 /*   By: asimoes <asimoes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 07:41:21 by asimoes           #+#    #+#             */
-/*   Updated: 2020/07/20 23:15:21 by asimoes          ###   ########.fr       */
+/*   Updated: 2020/07/20 23:16:03 by asimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ char		*set_precision(char *num_str, int num, t_specifier *s, int *len)
 	return (newstr);
 }
 
-char		*set_width(char *str, int number, t_specifier *specifier, int num_len, int *len)
+char		*set_width(char *str, int number, t_specifier *specifier, int *len)
 {
 	if (!specifier->is_width || *len >= specifier->width)
 		return (str);
