@@ -6,7 +6,7 @@
 /*   By: asimoes <asimoes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/03 11:35:07 by asimoes           #+#    #+#             */
-/*   Updated: 2020/07/14 22:11:49 by asimoes          ###   ########.fr       */
+/*   Updated: 2020/07/20 22:50:19 by asimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ typedef struct	s_specifier {
 	short int	is_width;
 	int			width;
 	short int	is_precision;
-	int			precision;
+	unsigned int precision;
 	int			length;
 	char		specifier;
 	char		character;
