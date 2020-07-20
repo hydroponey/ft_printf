@@ -6,14 +6,14 @@
 /*   By: asimoes <asimoes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 07:41:21 by asimoes           #+#    #+#             */
-/*   Updated: 2020/07/20 23:19:54 by asimoes          ###   ########.fr       */
+/*   Updated: 2020/07/20 23:26:34 by asimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./libft/libft.h"
 #include "ft_printf.h"
 
-char		*set_precision(char *num_str, int num, t_specifier *s, int *len)
+static char		*set_precision(char *num_str, int num, t_specifier *s, int *len)
 {
 	char	*newstr;
 	int		p_len;
@@ -37,36 +37,39 @@ char		*set_precision(char *num_str, int num, t_specifier *s, int *len)
 	return (newstr);
 }
 
-char		*set_width(char *str, int number, t_specifier *specifier, int *len)
+static char		*width_zero(char *str, int num, t_specifier *s, int *len)
+{
+	if (s->flags & FLAG_ZERO &&
+	(s->is_precision == 0 || (s->is_precision == 1 && s->precision < 0)))
+	{
+		str = pad_left('0', s->width - *len, str, 1);
+		if (num < 0)
+		{
+			str[0] = '-';
+			str[s->width - *len] = '0';
+		}
+	}
+	else
+		str = pad_left(' ', s->width - *len, str, 1);
+	return (str);
+}
+
+static char		*set_width(char *str, int num, t_specifier *specifier, int *len)
 {
 	if (!specifier->is_width || *len >= specifier->width)
 		return (str);
 	if (specifier->flags & FLAG_MINUS)
 		str = pad_right(' ', specifier->width - *len, str, 1);
 	else
-	{
-		if (specifier->flags & FLAG_ZERO &&
-		(specifier->is_precision == 0 || (specifier->is_precision == 1 && specifier->precision < 0)))
-		{
-			str = pad_left('0', specifier->width - *len, str, 1);
-			if (number < 0)
-			{
-				str[0] = '-';
-				str[specifier->width - *len] = '0';
-			}
-		}
-		else
-			str = pad_left(' ', specifier->width - *len, str, 1);
-	}
+		str = width_zero(str, num, specifier, len);
 	return (str);
 }
 
-void		print_d(va_list args, t_specifier *specifier, int *count)
+void			print_d(va_list args, t_specifier *specifier, int *count)
 {
 	int		number;
 	char	*number_str;
 	int		len;
-	int		num_len;
 
 	number = (int)va_arg(args, int);
 	if (!(number_str = ft_itoa(number)))
@@ -75,7 +78,6 @@ void		print_d(va_list args, t_specifier *specifier, int *count)
 		return ;
 	}
 	len = ft_strlen(number_str);
-	num_len = len;
 	number_str = set_precision(number_str, number, specifier, &len);
 	if (specifier->flags & FLAG_PLUS && number > 0)
 	{
