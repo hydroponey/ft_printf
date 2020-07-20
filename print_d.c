@@ -6,7 +6,7 @@
 /*   By: asimoes <asimoes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 07:41:21 by asimoes           #+#    #+#             */
-/*   Updated: 2020/07/14 16:07:30 by asimoes          ###   ########.fr       */
+/*   Updated: 2020/07/20 16:37:01 by asimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,19 +16,21 @@
 char		*set_precision(char *num_str, int num, t_specifier *s, int *len)
 {
 	char	*newstr;
+	int		p_len;
 
+	p_len = (num < 0) ? *len - 1 : *len;
 	newstr = num_str;
-	if (s->is_precision && s->precision > *len)
+	if (s->is_precision && s->precision > p_len)
 	{
 		if (num < 0)
 		{
-			newstr = pad_left('0', s->precision - *len + 1, num_str, 1);
+			newstr = pad_left('0', s->precision - p_len + 1, num_str, 1);
 			newstr[0] = '-';
-			newstr[s->precision - *len + 1] = '0';
+			newstr[s->precision - p_len + 1] = '0';
 		}
 		else
 		{
-			newstr = pad_left('0', s->precision - *len, num_str, 1);
+			newstr = pad_left('0', s->precision - p_len, num_str, 1);
 		}
 		*len = ft_strlen(newstr);
 	}
