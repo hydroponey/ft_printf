@@ -6,7 +6,7 @@
 /*   By: asimoes <asimoes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/03 11:46:13 by asimoes           #+#    #+#             */
-/*   Updated: 2020/07/20 16:00:00 by asimoes          ###   ########.fr       */
+/*   Updated: 2020/07/20 16:21:56 by asimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,7 +119,7 @@ int main()
 	mine = ft_printf("%--3p", NULL);
 	ft_printf("|\t%d\n", mine);
 	printf("---------------------------------------------------\n");
-	printf("specifier:\t|%%-4.*d|\n");
+	printf("specifier:\t|%%-4.*d| %d %d\n", 4, -135);
 	printf("printf:\t\t|");
 	real = printf("%-4.*d", 4, -135);
 	printf("|\t%d\n", real);
@@ -127,7 +127,7 @@ int main()
 	mine = ft_printf("%-4.*d", 4, -135);
 	ft_printf("|\t%d\n", mine);
 	printf("---------------------------------------------------\n");
-	printf("specifier:\t|%%04.*d|\n");
+	printf("specifier:\t|%%04.*d| %d %d\n", -3, 198);
 	printf("printf:\t\t|");
 	real = printf("%04.*d", -3, 198);
 	printf("|\t%d\n", real);
@@ -135,7 +135,7 @@ int main()
 	mine = ft_printf("%04.*d", -3, 198);
 	ft_printf("|\t%d\n", mine);
 	printf("---------------------------------------------------\n");
-	printf("specifier:\t|%%04.*d|\n");
+	printf("specifier:\t|%%04.*d| %d %d\n", -2, 198);
 	printf("printf:\t\t|");
 	real = printf("%04.*d", -2, 198);
 	printf("|\t%d\n", real);
@@ -143,7 +143,7 @@ int main()
 	mine = ft_printf("%04.*d", -2, 198);
 	ft_printf("|\t%d\n", mine);
 	printf("---------------------------------------------------\n");
-	printf("specifier:\t|%%04.*d|\n");
+	printf("specifier:\t|%%04.*d| %d %d\n", -1, 198);
 	printf("printf:\t\t|");
 	real = printf("%04.*d", -1, 198);
 	printf("|\t%d\n", real);
