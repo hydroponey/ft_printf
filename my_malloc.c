@@ -1,5 +1,8 @@
 #include <stdlib.h>
 
+#ifndef MYMALLOC_INCLUDED
+#define MYMALLOC_INCLUDED
+
 void *my_malloc(size_t size)
 {
 	srandomdev();
@@ -8,3 +11,4 @@ void *my_malloc(size_t size)
 	else
 		return (NULL);
 }
+#endif
