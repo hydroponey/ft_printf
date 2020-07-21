@@ -6,7 +6,7 @@
 /*   By: asimoes <asimoes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 15:40:07 by mchardin          #+#    #+#             */
-/*   Updated: 2020/07/21 22:29:51 by asimoes          ###   ########.fr       */
+/*   Updated: 2020/07/21 22:30:47 by asimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,8 +83,6 @@ int main()
 		PRINT(" --- Return : %d\n", PRINT("%.*i, %.*d, %.*d, %.*d, %.*d, %.*d, %.*d, %.*d", a, i, a, j, a, k, a, l, a, m, a, c, a, e, a, d));
 		a++;
 	}
-	PRINT("LINE 86\n");
-	return (0);
 	a = -2;
 	while(a < 5) //T70-177
 	{
@@ -98,6 +96,8 @@ int main()
 		}
 		a++;
 	}
+	PRINT("LINE 99\n");
+	return (0);
 	a = 19;
 	b = 14;
 	PRINT(" --- Return : %d\n", PRINT("%*.*i, %*.*d, %*.*d, %*.*d, %*.*d, %*.*d, %*.*d, %*.*d", a, b, -42, a, b, 42, -a, -b, -42, -a, -b, 42, -a, b, -42, -a, b, 42, a, -b, -42, a, -b, 42)); //T178
