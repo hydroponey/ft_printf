@@ -1,6 +1,6 @@
 #include <stdlib.h>
 
-static void *my_malloc(size_t size)
+void *my_malloc(size_t size)
 {
 	srandomdev();
 	if (random() & 1)
