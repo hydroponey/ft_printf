@@ -6,7 +6,7 @@
 /*   By: asimoes <asimoes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 15:40:07 by mchardin          #+#    #+#             */
-/*   Updated: 2020/07/21 22:30:47 by asimoes          ###   ########.fr       */
+/*   Updated: 2020/07/21 22:31:23 by asimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,8 +96,6 @@ int main()
 		}
 		a++;
 	}
-	PRINT("LINE 99\n");
-	return (0);
 	a = 19;
 	b = 14;
 	PRINT(" --- Return : %d\n", PRINT("%*.*i, %*.*d, %*.*d, %*.*d, %*.*d, %*.*d, %*.*d, %*.*d", a, b, -42, a, b, 42, -a, -b, -42, -a, -b, 42, -a, b, -42, -a, b, 42, a, -b, -42, a, -b, 42)); //T178
@@ -111,6 +109,8 @@ int main()
 	PRINT(" --- Return : %d\n", PRINT("%17s, %17s, %17s, %17s, %17s", n, o, p, q, r)); //T186
 	PRINT(" --- Return : %d\n", PRINT("%.s, %.s, %.s, %.s, %.s", n, o, p, q, r)); //T186
 	PRINT(" --- Return : %d\n", PRINT("%1.s, %1.s, %1.s, %1.s, %1.s", n, o, p, q, r)); //T186
+	PRINT("LINE 112\n");
+	return (0);
 	a = -4;
 	while (a < 5) //T187-213
 	{
