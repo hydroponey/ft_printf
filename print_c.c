@@ -6,18 +6,18 @@
 /*   By: asimoes <asimoes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 07:41:21 by asimoes           #+#    #+#             */
-/*   Updated: 2020/07/20 23:37:19 by asimoes          ###   ########.fr       */
+/*   Updated: 2020/07/21 23:14:00 by asimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./libft/libft.h"
 #include "ft_printf.h"
 
-void		print_nulchar(t_specifier *specifier, int *count)
+void		print_nulchar(t_specifier *s, int *count)
 {
-	if (specifier->is_width && (specifier->flags & FLAG_MINUS) == 0)
+	if (s->is_width && s->width != 0 && (s->flags & FLAG_MINUS) == 0)
 	{
-		while (--specifier->width)
+		while (--s->width)
 		{
 			ft_putchar(' ');
 			(*count)++;
@@ -25,9 +25,9 @@ void		print_nulchar(t_specifier *specifier, int *count)
 	}
 	ft_putchar((char)0);
 	(*count)++;
-	if (specifier->is_width && specifier->flags & FLAG_MINUS)
+	if (s->is_width && s->width != 0 && s->flags & FLAG_MINUS)
 	{
-		while (--specifier->width && (*count)++)
+		while (--s->width && (*count)++)
 			ft_putchar(' ');
 	}
 }
