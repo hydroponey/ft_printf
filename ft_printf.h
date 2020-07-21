@@ -6,7 +6,7 @@
 /*   By: asimoes <asimoes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/03 11:35:07 by asimoes           #+#    #+#             */
-/*   Updated: 2020/07/21 21:37:17 by asimoes          ###   ########.fr       */
+/*   Updated: 2020/07/21 21:55:50 by asimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include <stdio.h>
 #endif
 
+extern void *my_malloc(size_t);
 # define malloc	my_malloc
 
 # define ft_putchar(x)	ft_putchar_fd(x, 1)
