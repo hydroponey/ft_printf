@@ -6,7 +6,7 @@
 /*   By: asimoes <asimoes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/03 11:46:13 by asimoes           #+#    #+#             */
-/*   Updated: 2020/07/21 23:03:03 by asimoes          ###   ########.fr       */
+/*   Updated: 2020/07/21 23:03:58 by asimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -199,7 +199,29 @@ int main()
 	mine = ft_printf("%08.5i", 34);
 	ft_printf("|\t%d\n", mine);
 	printf("---------------------------------------------------\n");
-
+	//PRINT("%-3c, %-1c, %1c, %-2c, %-4c, %5c, %3c, %-*c, %-*c, %*c, %*c", 0, 0, 0, 0, 0, 0, 0, -1, 0, 0, 0, 0, 0, 0, 0)
+	printf("printf:\t\t|");
+	real = printf("%c", 0);
+	printf("|\t%d\n", real);
+	ft_printf("ft_printf:\t|");
+	mine = ft_printf("%c", 0);
+	ft_printf("|\t%d\n", mine);
+	printf("---------------------------------------------------\n");
+	printf("printf:\t\t|");
+	real = printf("%-c", 0);
+	printf("|\t%d\n", real);
+	ft_printf("ft_printf:\t|");
+	mine = ft_printf("%-c", 0);
+	ft_printf("|\t%d\n", mine);
+	printf("---------------------------------------------------\n");
+	printf("printf:\t\t|");
+	real = printf("%12c", 0);
+	printf("|\t%d\n", real);
+	ft_printf("ft_printf:\t|");
+	mine = ft_printf("%12c", 0);
+	ft_printf("|\t%d\n", mine);
+	printf("---------------------------------------------------\n");
+	return (0);
 	return (0);
 
 	// % tests
@@ -422,30 +444,6 @@ int main()
 	mine = ft_printf("%.0p", NULL);
 	ft_printf("|\t%d\t\033[0;31mWRONG\033[0m\n", mine);
 	printf("---------------------------------------------------\n");
-
-	//PRINT("%-3c, %-1c, %1c, %-2c, %-4c, %5c, %3c, %-*c, %-*c, %*c, %*c", 0, 0, 0, 0, 0, 0, 0, -1, 0, 0, 0, 0, 0, 0, 0)
-	printf("printf:\t\t|");
-	real = printf("%c", 0);
-	printf("|\t%d\n", real);
-	ft_printf("ft_printf:\t|");
-	mine = ft_printf("%c", 0);
-	ft_printf("|\t%d\n", mine);
-	printf("---------------------------------------------------\n");
-	printf("printf:\t\t|");
-	real = printf("%-c", 0);
-	printf("|\t%d\n", real);
-	ft_printf("ft_printf:\t|");
-	mine = ft_printf("%-c", 0);
-	ft_printf("|\t%d\n", mine);
-	printf("---------------------------------------------------\n");
-	printf("printf:\t\t|");
-	real = printf("%12c", 0);
-	printf("|\t%d\n", real);
-	ft_printf("ft_printf:\t|");
-	mine = ft_printf("%12c", 0);
-	ft_printf("|\t%d\n", mine);
-	printf("---------------------------------------------------\n");
-	return (0);
 
 	char *s = "abc";
 
