@@ -6,7 +6,7 @@
 /*   By: asimoes <asimoes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 11:32:06 by asimoes           #+#    #+#             */
-/*   Updated: 2020/07/22 10:05:02 by asimoes          ###   ########.fr       */
+/*   Updated: 2020/07/22 10:05:50 by asimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ static char		*set_preci(char *str, t_specifier *s, int *len, short int fptr)
 
 static char		*set_width(char *str, t_specifier *s, int *len, short int fptr)
 {
-	char	*ptr;
 	char	c;
 
 	c = (s->flags & FLAG_ZERO) ? '0' : ' ';
