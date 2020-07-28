@@ -9,6 +9,7 @@ SRCS	=	main.c\
 			../libft/ft_strlcpy.c\
 			../libft/ft_substr.c\
 			../libft/ft_memset.c\
+			../libft/ft_strdup.c\
 			../ft_printf.c\
 			../print_c.c\
 			../print_d.c\
