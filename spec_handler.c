@@ -6,12 +6,20 @@
 /*   By: asimoes <asimoes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/03 11:48:05 by asimoes           #+#    #+#             */
-/*   Updated: 2020/07/20 15:39:50 by asimoes          ###   ########.fr       */
+/*   Updated: 2020/07/28 15:01:53 by asimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./libft/libft.h"
 #include "ft_printf.h"
+
+static void			percent(const char **format, t_specifier *s, int *count)
+{
+	ft_putchar_fd('%', 1);
+	(*count)++;
+	(*format)++;
+	free(s);
+}
 
 static t_specifier	*get_specifier_struct(void)
 {
@@ -41,13 +49,13 @@ void				spec_handler(const char **format, va_list args, int *count)
 	}
 	(*format)++;
 	if (**format == '\0')
+	{
+		free(specifier);
 		return ;
+	}
 	if (**format == '%')
 	{
-		ft_putchar_fd('%', 1);
-		(*count)++;
-		(*format)++;
-		free(specifier);
+		percent(format, specifier, count);
 		return ;
 	}
 	get_flags(format, specifier);
