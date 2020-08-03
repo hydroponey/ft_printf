@@ -6,14 +6,14 @@
 /*   By: asimoes <asimoes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 11:32:06 by asimoes           #+#    #+#             */
-/*   Updated: 2020/07/28 14:50:52 by asimoes          ###   ########.fr       */
+/*   Updated: 2020/07/28 20:17:15 by asimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./libft/libft.h"
 #include "ft_printf.h"
 
-static char		*set_preci(char *str, t_specifier *s, int *len)
+static char		*set_precision(char *str, t_specifier *s, int *len)
 {
 	char	*ptr;
 
@@ -58,7 +58,7 @@ void			print_s(va_list args, t_specifier *s, int *count)
 	else
 		str = ft_strdup(va_str);
 	len = ft_strlen(str);
-	str = set_preci(str, s, &len);
+	str = set_precision(str, s, &len);
 	str = set_width(str, s, &len);
 	*count += ft_strlen(str);
 	ft_putstr_fd(str, 1);
