@@ -6,7 +6,7 @@
 /*   By: asimoes <asimoes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 07:41:21 by asimoes           #+#    #+#             */
-/*   Updated: 2020/08/03 12:18:31 by asimoes          ###   ########.fr       */
+/*   Updated: 2020/08/03 12:19:44 by asimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ static char		*set_width(char *str, int num, t_specifier *specifier, int *len)
 
 static char		*set_space(char *str, int num, t_specifier *s, int *len)
 {
-	if (num > 0 && len > s->width
+	if (num > 0 && *len > s->width
 		&& s->flags & FLAG_SPACE
 		&& (s->flags & FLAG_PLUS) == 0)
 		str = pad_left(' ', 1, str, 1);
