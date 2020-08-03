@@ -6,7 +6,7 @@
 /*   By: asimoes <asimoes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/03 11:46:13 by asimoes           #+#    #+#             */
-/*   Updated: 2020/08/03 14:56:23 by asimoes          ###   ########.fr       */
+/*   Updated: 2020/08/03 14:59:36 by asimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -453,6 +453,14 @@ int main()
 	printf("|\t%d\n", real);
 	ft_printf("ft_printf:\t|");
 	mine = ft_printf("%                           4d", 42);
+	ft_printf("|\t%d\n", mine);
+	printf("---------------------------------------------------\n");
+	printf("specifier:\t|{%%*321d}| 5 0\n");
+	printf("printf:\t\t|");
+	real = printf("{%*321d}", 5, 0);
+	printf("|\t%d\n", real);
+	ft_printf("ft_printf:\t|");
+	mine = ft_printf("{%*321d}", 5, 0);
 	ft_printf("|\t%d\n", mine);
 	return (0);
 
