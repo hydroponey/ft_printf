@@ -6,16 +6,17 @@
 /*   By: asimoes <asimoes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 07:41:21 by asimoes           #+#    #+#             */
-/*   Updated: 2020/07/20 17:08:52 by asimoes          ###   ########.fr       */
+/*   Updated: 2020/07/28 20:26:50 by asimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./libft/libft.h"
 #include "ft_printf.h"
 
-char		*get_address_str(void *ptr)
+static char		*get_address_str(void *ptr)
 {
 	char			*str;
+	char			*old_ptr;
 	unsigned long	p0;
 	char			cur[2];
 	int				temp;
@@ -28,13 +29,15 @@ char		*get_address_str(void *ptr)
 		temp = p0 % 16;
 		cur[0] = (temp < 10) ? temp + 48 : temp + 87;
 		cur[1] = '\0';
+		old_ptr = str;
 		str = ft_strjoin(cur, str);
+		free(old_ptr);
 		p0 = p0 / 16;
 	}
 	return (str);
 }
 
-char		*p_set_precision(char *str, void *ptr, t_specifier *specifier)
+static char		*set_precision(char *str, void *ptr, t_specifier *specifier)
 {
 	int len;
 
@@ -52,7 +55,7 @@ char		*p_set_precision(char *str, void *ptr, t_specifier *specifier)
 	return (str);
 }
 
-char		*p_set_width(char *str, t_specifier *specifier)
+static char		*set_width(char *str, t_specifier *specifier)
 {
 	int len;
 
@@ -67,9 +70,10 @@ char		*p_set_width(char *str, t_specifier *specifier)
 	return (str);
 }
 
-void		print_p(va_list args, t_specifier *specifier, int *count)
+void			print_p(va_list args, t_specifier *specifier, int *count)
 {
 	char	*str;
+	char	*old_ptr;
 	void	*ptr;
 
 	ptr = (void*)va_arg(args, void*);
@@ -83,12 +87,13 @@ void		print_p(va_list args, t_specifier *specifier, int *count)
 		ft_strlcpy(str, "0", 2);
 	}
 	else
-	{
 		str = get_address_str(ptr);
-	}
 	str = p_set_precision(str, ptr, specifier);
+	old_ptr = str;
 	str = ft_strjoin("0x", str);
-	str = p_set_width(str, specifier);
+	free(old_ptr);
+	str = set_width(str, specifier);
 	ft_putstr_fd(str, 1);
 	*count += ft_strlen(str);
+	free(str);
 }
