@@ -6,7 +6,7 @@
 /*   By: asimoes <asimoes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 07:41:21 by asimoes           #+#    #+#             */
-/*   Updated: 2020/08/03 12:19:44 by asimoes          ###   ########.fr       */
+/*   Updated: 2020/08/03 12:20:27 by asimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ static char		*set_space(char *str, int num, t_specifier *s, int *len)
 		&& (s->flags & FLAG_PLUS) == 0)
 		str = pad_left(' ', 1, str, 1);
 	*len += 1;
+	return (str);
 }
 
 void			print_d(va_list args, t_specifier *s, int *count)
