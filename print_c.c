@@ -6,14 +6,14 @@
 /*   By: asimoes <asimoes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 07:41:21 by asimoes           #+#    #+#             */
-/*   Updated: 2020/07/28 20:25:13 by asimoes          ###   ########.fr       */
+/*   Updated: 2020/08/03 13:03:50 by asimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./libft/libft.h"
 #include "ft_printf.h"
 
-static void		print_nulchar(t_specifier *s, int *count)
+static void		print_nulchar(t_s_data *s, int *count)
 {
 	if (s->is_width && s->width != 0 && (s->flags & FLAG_MINUS) == 0)
 	{
@@ -32,7 +32,7 @@ static void		print_nulchar(t_specifier *s, int *count)
 	}
 }
 
-void			print_c(va_list args, t_specifier *s, int *count)
+void			print_c(va_list args, t_s_data *s, int *count)
 {
 	char	*str;
 	int		c;
@@ -51,9 +51,9 @@ void			print_c(va_list args, t_specifier *s, int *count)
 	str[0] = (char)c;
 	str[1] = '\0';
 	if (s->width > 1 && s->flags & FLAG_MINUS)
-		str = pad_right(' ', s->width - 1, str, 1);
+		str = pad_right(' ', s->width - 1, str);
 	else if (s->width > 1)
-		str = pad_left(s->flags & FLAG_ZERO ? '0' : ' ', s->width - 1, str, 1);
+		str = pad_left(s->flags & FLAG_ZERO ? '0' : ' ', s->width - 1, str);
 	ft_putstr_fd(str, 1);
 	*count += ft_strlen(str);
 	free(str);

@@ -6,14 +6,14 @@
 /*   By: asimoes <asimoes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 11:32:06 by asimoes           #+#    #+#             */
-/*   Updated: 2020/07/28 20:17:15 by asimoes          ###   ########.fr       */
+/*   Updated: 2020/08/03 13:04:32 by asimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./libft/libft.h"
 #include "ft_printf.h"
 
-static char		*set_precision(char *str, t_specifier *s, int *len)
+static char		*set_precision(char *str, t_s_data *s, int *len)
 {
 	char	*ptr;
 
@@ -27,19 +27,19 @@ static char		*set_precision(char *str, t_specifier *s, int *len)
 	return (str);
 }
 
-static char		*set_width(char *str, t_specifier *s, int *len)
+static char		*set_width(char *str, t_s_data *s, int *len)
 {
 	char	c;
 
 	c = (s->flags & FLAG_ZERO) ? '0' : ' ';
 	if (s->flags & FLAG_MINUS && s->width > *len)
-		str = pad_right(' ', s->width - *len, str, 1);
+		str = pad_right(' ', s->width - *len, str);
 	else if (s->width > *len)
-		str = pad_left(c, s->width - *len, str, 1);
+		str = pad_left(c, s->width - *len, str);
 	return (str);
 }
 
-void			print_s(va_list args, t_specifier *s, int *count)
+void			print_s(va_list args, t_s_data *s, int *count)
 {
 	char		*str;
 	char		*va_str;

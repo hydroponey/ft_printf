@@ -6,7 +6,7 @@
 /*   By: asimoes <asimoes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 07:41:21 by asimoes           #+#    #+#             */
-/*   Updated: 2020/07/28 15:02:55 by asimoes          ###   ########.fr       */
+/*   Updated: 2020/08/03 13:05:01 by asimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,11 +56,11 @@ static char		*set_precision(char *num_str, int precision)
 
 	len = ft_strlen(num_str);
 	if (precision != -1 && precision > len)
-		num_str = pad_left('0', precision - len, num_str, 1);
+		num_str = pad_left('0', precision - len, num_str);
 	return (num_str);
 }
 
-static char		*set_width(char *str, t_specifier *specifier)
+static char		*set_width(char *str, t_s_data *specifier)
 {
 	int len;
 
@@ -68,20 +68,20 @@ static char		*set_width(char *str, t_specifier *specifier)
 	if (len >= specifier->width)
 		return (str);
 	if (specifier->flags & FLAG_MINUS)
-		str = pad_right(' ', specifier->width - len, str, 1);
+		str = pad_right(' ', specifier->width - len, str);
 	else
 	{
 		if (specifier->flags & FLAG_ZERO &&
 			(specifier->is_precision == 0 || (specifier->is_precision == 1
 			&& specifier->precision < 0)))
-			str = pad_left('0', specifier->width - len, str, 1);
+			str = pad_left('0', specifier->width - len, str);
 		else
-			str = pad_left(' ', specifier->width - len, str, 1);
+			str = pad_left(' ', specifier->width - len, str);
 	}
 	return (str);
 }
 
-void			print_x(va_list args, t_specifier *specifier, int *count)
+void			print_x(va_list args, t_s_data *specifier, int *count)
 {
 	unsigned int	number;
 	char			*str;

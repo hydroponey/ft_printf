@@ -6,14 +6,14 @@
 /*   By: asimoes <asimoes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/03 11:48:05 by asimoes           #+#    #+#             */
-/*   Updated: 2020/07/28 15:01:53 by asimoes          ###   ########.fr       */
+/*   Updated: 2020/08/03 13:07:01 by asimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./libft/libft.h"
 #include "ft_printf.h"
 
-static void			percent(const char **format, t_specifier *s, int *count)
+static void			percent(const char **format, t_s_data *s, int *count)
 {
 	ft_putchar_fd('%', 1);
 	(*count)++;
@@ -21,11 +21,11 @@ static void			percent(const char **format, t_specifier *s, int *count)
 	free(s);
 }
 
-static t_specifier	*get_specifier_struct(void)
+static t_s_data		*get_specifier_struct(void)
 {
-	t_specifier *specifier;
+	t_s_data *specifier;
 
-	if (!(specifier = (t_specifier*)malloc(sizeof(t_specifier))))
+	if (!(specifier = (t_s_data*)malloc(sizeof(t_s_data))))
 		return (NULL);
 	specifier->flags = 0;
 	specifier->is_width = 0;
@@ -40,7 +40,7 @@ static t_specifier	*get_specifier_struct(void)
 
 void				spec_handler(const char **format, va_list args, int *count)
 {
-	t_specifier *specifier;
+	t_s_data *specifier;
 
 	if (!(specifier = get_specifier_struct()))
 	{
@@ -66,7 +66,7 @@ void				spec_handler(const char **format, va_list args, int *count)
 	free(specifier);
 }
 
-void				call_spec_func(va_list args, t_specifier *s, int *count)
+void				call_spec_func(va_list args, t_s_data *s, int *count)
 {
 	if (s->specifier == 'c')
 		print_c(args, s, count);
