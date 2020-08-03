@@ -6,7 +6,7 @@
 /*   By: asimoes <asimoes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 07:41:21 by asimoes           #+#    #+#             */
-/*   Updated: 2020/07/28 20:26:50 by asimoes          ###   ########.fr       */
+/*   Updated: 2020/08/03 12:14:50 by asimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ void			print_p(va_list args, t_specifier *specifier, int *count)
 	}
 	else
 		str = get_address_str(ptr);
-	str = p_set_precision(str, ptr, specifier);
+	str = set_precision(str, ptr, specifier);
 	old_ptr = str;
 	str = ft_strjoin("0x", str);
 	free(old_ptr);
