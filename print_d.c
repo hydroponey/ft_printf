@@ -6,7 +6,7 @@
 /*   By: asimoes <asimoes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 07:41:21 by asimoes           #+#    #+#             */
-/*   Updated: 2020/07/20 23:26:34 by asimoes          ###   ########.fr       */
+/*   Updated: 2020/08/03 12:18:31 by asimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,16 @@ static char		*set_width(char *str, int num, t_specifier *specifier, int *len)
 	return (str);
 }
 
-void			print_d(va_list args, t_specifier *specifier, int *count)
+static char		*set_space(char *str, int num, t_specifier *s, int *len)
+{
+	if (num > 0 && len > s->width
+		&& s->flags & FLAG_SPACE
+		&& (s->flags & FLAG_PLUS) == 0)
+		str = pad_left(' ', 1, str, 1);
+	*len += 1;
+}
+
+void			print_d(va_list args, t_specifier *s, int *count)
 {
 	int		number;
 	char	*number_str;
@@ -78,17 +87,16 @@ void			print_d(va_list args, t_specifier *specifier, int *count)
 		return ;
 	}
 	len = ft_strlen(number_str);
-	number_str = set_precision(number_str, number, specifier, &len);
-	if (specifier->flags & FLAG_PLUS && number > 0)
+	number_str = set_precision(number_str, number, s, &len);
+	if (s->flags & FLAG_PLUS && number > 0)
 	{
 		number_str = pad_left('+', 1, number_str, 1);
 		len++;
 	}
-	if (specifier->precision == 0 && number == 0)
+	if (s->precision == 0 && number == 0)
 		number_str[--len] = '\0';
-	number_str = set_width(number_str, number, specifier, &len);
-	if (number > 0 && len > specifier->width && specifier->flags & FLAG_SPACE)
-		number_str = pad_left(' ', 1, number_str, 1);
+	number_str = set_width(number_str, number, s, &len);
+	number_str = set_space(number_str, number, s, &len);
 	ft_putstr_fd(number_str, 1);
 	*count += ft_strlen(number_str);
 	free(number_str);
