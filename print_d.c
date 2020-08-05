@@ -6,7 +6,7 @@
 /*   By: asimoes <asimoes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 07:41:21 by asimoes           #+#    #+#             */
-/*   Updated: 2020/08/05 22:41:58 by asimoes          ###   ########.fr       */
+/*   Updated: 2020/08/05 22:43:05 by asimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ static char		*set_width(char *str, int num, t_s_data *specifier, int *len)
 	if (!specifier->is_width || *len >= specifier->width)
 		return (str);
 	if (specifier->flags & FLAG_PLUS && num >= 0)
-		*len--;
+		specifier->width--;
 	if (specifier->flags & FLAG_MINUS)
 		str = pad_right(' ', specifier->width - *len, str);
 	else
