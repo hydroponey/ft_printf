@@ -6,7 +6,7 @@
 /*   By: asimoes <asimoes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/03 11:46:13 by asimoes           #+#    #+#             */
-/*   Updated: 2020/08/03 15:06:14 by asimoes          ###   ########.fr       */
+/*   Updated: 2020/08/05 16:11:05 by asimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -485,6 +485,95 @@ int main()
 	printf("|\t%d\n", real);
 	ft_printf("ft_printf:\t|");
 	mine = ft_printf("{%***8}", 5, 8, 98, 0);
+	ft_printf("|\t%d\n", mine);
+	printf("---------------------------------------------------\n");
+	printf("specifier:\t|%%+d| 0\n");
+	printf("printf:\t\t|");
+	real = printf("%+d", 0);
+	printf("|\t%d\n", real);
+	ft_printf("ft_printf:\t|");
+	mine = ft_printf("%+d", 0);
+	ft_printf("|\t%d\n", mine);
+	printf("---------------------------------------------------\n");
+	printf("specifier:\t|%%0+5d| 42\n");
+	printf("printf:\t\t|");
+	real = printf("%0+5d", 42);
+	printf("|\t%d\n", real);
+	ft_printf("ft_printf:\t|");
+	mine = ft_printf("%0+5d", 42);
+	ft_printf("|\t%d\n", mine);
+	printf("---------------------------------------------------\n");
+	printf("specifier:\t|%%0+5d| 42\n");
+	printf("printf:\t\t|");
+	real = printf("%0+5d", 42);
+	printf("|\t%d\n", real);
+	ft_printf("ft_printf:\t|");
+	mine = ft_printf("%0+5d", 42);
+	ft_printf("|\t%d\n", mine);
+	printf("---------------------------------------------------\n");
+	printf("specifier:\t|%% u| 4294967295\n");
+	printf("printf:\t\t|");
+	real = printf("% u", 4294967295);
+	printf("|\t%d\n", real);
+	ft_printf("ft_printf:\t|");
+	mine = ft_printf("% u", 4294967295);
+	ft_printf("|\t%d\n", mine);
+	printf("---------------------------------------------------\n");
+	printf("specifier:\t|%%+u| 4294967295\n");
+	printf("printf:\t\t|");
+	real = printf("%+u", 4294967295);
+	printf("|\t%d\n", real);
+	ft_printf("ft_printf:\t|");
+	mine = ft_printf("%+u", 4294967295);
+	ft_printf("|\t%d\n", mine);
+	printf("---------------------------------------------------\n");
+	printf("specifier:\t|%%5+d| 42\n");
+	printf("printf:\t\t|");
+	real = printf("%5+d", 42);
+	printf("|\t%d\n", real);
+	ft_printf("ft_printf:\t|");
+	mine = ft_printf("%5+d", 42);
+	ft_printf("|\t%d\n", mine);
+	printf("---------------------------------------------------\n");
+	printf("specifier:\t|%%5+d| -42\n");
+	printf("printf:\t\t|");
+	real = printf("%5+d", -42);
+	printf("|\t%d\n", real);
+	ft_printf("ft_printf:\t|");
+	mine = ft_printf("%5+d", -42);
+	ft_printf("|\t%d\n", mine);
+	printf("---------------------------------------------------\n");
+	printf("specifier:\t|%%-5+d| 42\n");
+	printf("printf:\t\t|");
+	real = printf("%-5+d", 42);
+	printf("|\t%d\n", real);
+	ft_printf("ft_printf:\t|");
+	mine = ft_printf("%-5+d", 42);
+	ft_printf("|\t%d\n", mine);
+	printf("---------------------------------------------------\n");
+	printf("specifier:\t|%%-5+d| -42\n");
+	printf("printf:\t\t|");
+	real = printf("%-5+d", -42);
+	printf("|\t%d\n", real);
+	ft_printf("ft_printf:\t|");
+	mine = ft_printf("%-5+d", -42);
+	ft_printf("|\t%d\n", mine);
+	printf("---------------------------------------------------\n");
+	printf("specifier:\t|%%U| 4294967296\n");
+	printf("printf:\t\t|");
+	real = printf("%U", 4294967296);
+	printf("|\t%d\n", real);
+	ft_printf("ft_printf:\t|");
+	mine = ft_printf("%U", 4294967296);
+	ft_printf("|\t%d\n", mine);
+	printf("---------------------------------------------------\n");
+	char c = 'z';
+	printf("specifier:\t|%%U| 4294967296\n");
+	printf("printf:\t\t|");
+	real = printf("%s%d%p%%%i%o%u%x%X%c","bonjour", 42, &c, 42, 42, 42, 42, 42, 'c');
+	printf("|\t%d\n", real);
+	ft_printf("ft_printf:\t|");
+	mine = ft_printf("%s%d%p%%%i%o%u%x%X%c","bonjour", 42, &c, 42, 42, 42, 42, 42, 'c');
 	ft_printf("|\t%d\n", mine);
 	return (0);
 
