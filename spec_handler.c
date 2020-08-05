@@ -6,7 +6,7 @@
 /*   By: asimoes <asimoes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/03 11:48:05 by asimoes           #+#    #+#             */
-/*   Updated: 2020/08/05 22:21:22 by asimoes          ###   ########.fr       */
+/*   Updated: 2020/08/05 22:26:15 by asimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void				call_spec_func(va_list args, t_s_data *s, int *count)
 		print_p(args, s, count);
 	if (s->specifier == 'd' || s->specifier == 'i')
 		print_d(args, s, count);
-	if (s->specifier == 'u' || s->specifier == 'U')
+	if (s->specifier == 'u')
 		print_u(args, s, count);
 	if (s->specifier == 'x' || s->specifier == 'X')
 		print_x(args, s, count);

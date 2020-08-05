@@ -6,7 +6,7 @@
 /*   By: asimoes <asimoes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/14 22:00:49 by asimoes           #+#    #+#             */
-/*   Updated: 2020/08/05 22:23:27 by asimoes          ###   ########.fr       */
+/*   Updated: 2020/08/05 22:26:21 by asimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ void	get_specifier(const char **format, t_s_data *specifier)
 {
 	if (**format == 'c' || **format == 's' || **format == 'p' ||
 		**format == 'd' || **format == 'i' || **format == 'u' ||
-		**format == 'U' || **format == 'x' || **format == 'X')
+		**format == 'x' || **format == 'X')
 	{
 		specifier->specifier = **format;
 		(*format)++;
