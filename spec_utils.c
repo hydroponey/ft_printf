@@ -6,7 +6,7 @@
 /*   By: asimoes <asimoes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/14 22:00:49 by asimoes           #+#    #+#             */
-/*   Updated: 2020/08/03 12:57:14 by asimoes          ###   ########.fr       */
+/*   Updated: 2020/08/05 15:54:28 by asimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,21 +34,18 @@ void	get_flags(const char **format, t_s_data *specifier)
 
 void	get_width(const char **format, va_list args, t_s_data *specifier)
 {
-	if (**format == '*')
+	while (**format == '*')
 	{
 		specifier->is_width = 1;
 		specifier->width = (int)va_arg(args, int);
 		(*format)++;
 	}
-	else
+	if (**format >= '0' && **format <= '9')
 	{
-		if (**format >= '0' && **format <= '9')
-		{
-			specifier->is_width = 1;
-			specifier->width = ft_atoi(*format);
-			while (**format >= '0' && **format <= '9')
-				(*format)++;
-		}
+		specifier->is_width = 1;
+		specifier->width = ft_atoi(*format);
+		while (**format >= '0' && **format <= '9')
+			(*format)++;
 	}
 	if (specifier->is_width && specifier->width < 0)
 	{
