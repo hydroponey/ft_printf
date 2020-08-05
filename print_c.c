@@ -6,7 +6,7 @@
 /*   By: asimoes <asimoes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 07:41:21 by asimoes           #+#    #+#             */
-/*   Updated: 2020/08/03 13:03:50 by asimoes          ###   ########.fr       */
+/*   Updated: 2020/08/05 16:17:26 by asimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,16 @@ static void		print_nulchar(t_s_data *s, int *count)
 	{
 		while (--s->width)
 		{
-			ft_putchar(' ');
+			ft_putchar_fd(' ', 1);
 			(*count)++;
 		}
 	}
-	ft_putchar((char)0);
+	ft_putchar_fd((char)0, 1);
 	(*count)++;
 	if (s->is_width && s->width != 0 && s->flags & FLAG_MINUS)
 	{
 		while (--s->width && (*count)++)
-			ft_putchar(' ');
+			ft_putchar_fd(' ', 1);
 	}
 }
 

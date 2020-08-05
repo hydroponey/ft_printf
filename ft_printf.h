@@ -6,7 +6,7 @@
 /*   By: asimoes <asimoes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/03 11:35:07 by asimoes           #+#    #+#             */
-/*   Updated: 2020/08/03 12:59:03 by asimoes          ###   ########.fr       */
+/*   Updated: 2020/08/05 16:17:37 by asimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@
 
 # include <unistd.h>
 # include <stdarg.h>
-
-# define ft_putchar(x)	ft_putchar_fd(x, 1)
 
 # define FLAG_MINUS	1
 # define FLAG_PLUS	2
