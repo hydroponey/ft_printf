@@ -6,7 +6,7 @@
 /*   By: asimoes <asimoes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/14 22:00:49 by asimoes           #+#    #+#             */
-/*   Updated: 2020/08/05 22:26:21 by asimoes          ###   ########.fr       */
+/*   Updated: 2020/08/06 18:05:59 by asimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ void	get_width(const char **format, va_list args, t_s_data *specifier)
 		if ((specifier->flags & FLAG_MINUS) == 0)
 			specifier->flags ^= FLAG_MINUS;
 	}
+	get_flags(format, specifier);
 }
 
 void	get_precision(const char **format, va_list args, t_s_data *specifier)
@@ -73,6 +74,7 @@ void	get_precision(const char **format, va_list args, t_s_data *specifier)
 				(*format)++;
 		}
 	}
+	get_flags(format, specifier);
 }
 
 void	get_specifier(const char **format, t_s_data *specifier)
