@@ -6,7 +6,7 @@
 /*   By: asimoes <asimoes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 07:41:21 by asimoes           #+#    #+#             */
-/*   Updated: 2020/08/07 00:03:15 by asimoes          ###   ########.fr       */
+/*   Updated: 2020/08/07 00:08:39 by asimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ static char		*width_zero(char *str, int num, t_s_data *s, int *len)
 		}
 		if (s->flags & FLAG_PLUS && num >= 0)
 			str[0] = '+';
+		if (s->flags & FLAG_SPACE)
+			str[0] = ' ';
 	}
 	else
 		str = pad_left(' ', s->width - *len, str);
