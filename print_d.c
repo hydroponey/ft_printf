@@ -6,7 +6,7 @@
 /*   By: asimoes <asimoes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 07:41:21 by asimoes           #+#    #+#             */
-/*   Updated: 2020/08/05 22:51:23 by asimoes          ###   ########.fr       */
+/*   Updated: 2020/08/06 17:57:14 by asimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,11 +59,7 @@ static char		*set_width(char *str, int num, t_s_data *specifier, int *len)
 	if (!specifier->is_width || *len >= specifier->width)
 		return (str);
 	if (specifier->flags & FLAG_PLUS && num >= 0)
-	{
 		specifier->width--;
-		str = pad_left('+', 1, str);
-		(*len)++;
-	}
 	if (specifier->flags & FLAG_MINUS)
 		str = pad_right(' ', specifier->width - *len, str);
 	else
@@ -99,6 +95,11 @@ void			print_d(va_list args, t_s_data *s, int *count)
 		number_str[--len] = '\0';
 	number_str = set_width(number_str, number, s, &len);
 	number_str = set_space(number_str, number, s, &len);
+	if (s->flags & FLAG_PLUS && number >= 0)
+	{
+		number_str = pad_left('+', 1, number_str);
+		len++;
+	}
 	ft_putstr_fd(number_str, 1);
 	*count += ft_strlen(number_str);
 	free(number_str);
