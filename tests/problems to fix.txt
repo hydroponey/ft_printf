@@ -1,0 +1,5 @@
+pft: OK
+pft_2019: OK
+42TESTERS-PRINTF: OK
+printf_lover_v2: OK
+FT_PRINTF_TESTER: OK
