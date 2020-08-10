@@ -6,7 +6,7 @@
 #    By: asimoes <asimoes@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/03 11:31:41 by asimoes           #+#    #+#              #
-#    Updated: 2020/08/11 00:19:46 by asimoes          ###   ########.fr        #
+#    Updated: 2020/08/11 00:23:13 by asimoes          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,8 @@ all:			$(NAME)
 
 clean:			
 				rm -rf *.o
+				rm -rf libft/*.o
+				rm -rf libft/libft.a
 
 fclean:			clean
 				rm -rf $(NAME)
