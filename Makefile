@@ -6,7 +6,7 @@
 #    By: asimoes <asimoes@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/03 11:31:41 by asimoes           #+#    #+#              #
-#    Updated: 2020/08/11 00:13:33 by asimoes          ###   ########.fr        #
+#    Updated: 2020/08/11 00:19:46 by asimoes          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,10 +16,9 @@ OBJ		=	$(SRCS:.c=.o)
 NAME	=	libftprintf.a
 
 $(NAME):
-				gcc -c -Wall -Werror -Wextra libft/*.c
+				$(MAKE) -C libft
 				gcc -c -Wall -Werror -Wextra $(SRCS)
-				ar rc $(NAME) *.o
-				ranlib $(NAME)
+				ar rcs $(NAME) *.o libft/*.o
 
 all:			$(NAME)
 
