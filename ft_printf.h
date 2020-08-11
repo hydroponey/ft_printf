@@ -6,7 +6,7 @@
 /*   By: asimoes <asimoes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/03 11:35:07 by asimoes           #+#    #+#             */
-/*   Updated: 2020/08/11 20:25:52 by asimoes          ###   ########.fr       */
+/*   Updated: 2020/08/11 20:41:31 by asimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ void			print_d(va_list args, t_s_data *specifier, int *count);
 void			print_p(va_list args, t_s_data *specifier, int *count);
 void			print_u(va_list args, t_s_data *specifier, int *count);
 void			print_x(va_list args, t_s_data *specifier, int *count);
-void			call_spec_func(va_list args, t_s_data *specifier, int *count);
 void			spec_handler(const char **format, va_list args, int *count);
 
 #endif

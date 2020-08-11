@@ -6,7 +6,7 @@
 /*   By: asimoes <asimoes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/03 11:48:05 by asimoes           #+#    #+#             */
-/*   Updated: 2020/08/06 18:05:48 by asimoes          ###   ########.fr       */
+/*   Updated: 2020/08/11 20:41:19 by asimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,22 @@ static t_s_data		*get_specifier_struct(void)
 	return (specifier);
 }
 
+static void			call_spec_func(va_list args, t_s_data *s, int *count)
+{
+	if (s->specifier == 'c')
+		print_c(args, s, count);
+	if (s->specifier == 's')
+		print_s(args, s, count);
+	if (s->specifier == 'p')
+		print_p(args, s, count);
+	if (s->specifier == 'd' || s->specifier == 'i')
+		print_d(args, s, count);
+	if (s->specifier == 'u')
+		print_u(args, s, count);
+	if (s->specifier == 'x' || s->specifier == 'X')
+		print_x(args, s, count);
+}
+
 void				spec_handler(const char **format, va_list args, int *count)
 {
 	t_s_data *specifier;
@@ -64,20 +80,4 @@ void				spec_handler(const char **format, va_list args, int *count)
 	get_specifier(format, specifier);
 	call_spec_func(args, specifier, count);
 	free(specifier);
-}
-
-void				call_spec_func(va_list args, t_s_data *s, int *count)
-{
-	if (s->specifier == 'c')
-		print_c(args, s, count);
-	if (s->specifier == 's')
-		print_s(args, s, count);
-	if (s->specifier == 'p')
-		print_p(args, s, count);
-	if (s->specifier == 'd' || s->specifier == 'i')
-		print_d(args, s, count);
-	if (s->specifier == 'u')
-		print_u(args, s, count);
-	if (s->specifier == 'x' || s->specifier == 'X')
-		print_x(args, s, count);
 }
