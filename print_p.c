@@ -6,7 +6,7 @@
 /*   By: asimoes <asimoes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 07:41:21 by asimoes           #+#    #+#             */
-/*   Updated: 2020/08/03 13:04:23 by asimoes          ###   ########.fr       */
+/*   Updated: 2020/08/11 21:15:22 by asimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,22 +17,27 @@ static char		*get_address_str(void *ptr)
 {
 	char			*str;
 	char			*old_ptr;
-	unsigned long	p0;
+	unsigned long	ptr_value;
 	char			cur[2];
 	int				temp;
 
-	p0 = (unsigned long)ptr;
-	str = malloc(1);
+	ptr_value = (unsigned long)ptr;
+	if (!(str = malloc(1)))
+		return (NULL);
 	str[0] = '\0';
-	while (p0 != 0)
+	while (ptr_value != 0)
 	{
-		temp = p0 % 16;
+		temp = ptr_value % 16;
 		cur[0] = (temp < 10) ? temp + 48 : temp + 87;
 		cur[1] = '\0';
 		old_ptr = str;
-		str = ft_strjoin(cur, str);
+		if (!(str = ft_strjoin(cur, str)))
+		{
+			free(old_ptr);
+			return (NULL);
+		}
 		free(old_ptr);
-		p0 = p0 / 16;
+		ptr_value = ptr_value / 16;
 	}
 	return (str);
 }
@@ -70,6 +75,30 @@ static char		*set_width(char *str, t_s_data *specifier)
 	return (str);
 }
 
+char			*get_str(void *ptr, int *count)
+{
+	char	*str;
+
+	if (ptr == NULL)
+	{
+		if (!(str = malloc(sizeof(char) * 2)))
+		{
+			*count = -1;
+			return (str);
+		}
+		ft_strlcpy(str, "0", 2);
+	}
+	else
+	{
+		if (!(str = get_address_str(ptr)))
+		{
+			*count = -1;
+			return (str);
+		}
+	}
+	return (str);
+}
+
 void			print_p(va_list args, t_s_data *specifier, int *count)
 {
 	char	*str;
@@ -77,20 +106,15 @@ void			print_p(va_list args, t_s_data *specifier, int *count)
 	void	*ptr;
 
 	ptr = (void*)va_arg(args, void*);
-	if (ptr == NULL)
-	{
-		if (!(str = malloc(sizeof(char) * 2)))
-		{
-			*count = -1;
-			return ;
-		}
-		ft_strlcpy(str, "0", 2);
-	}
-	else
-		str = get_address_str(ptr);
+	if (!(str = get_str(ptr, count)))
+		return ;
 	str = set_precision(str, ptr, specifier);
 	old_ptr = str;
-	str = ft_strjoin("0x", str);
+	if (!(str = ft_strjoin("0x", str)))
+	{
+		*count = -1;
+		return ;
+	}
 	free(old_ptr);
 	str = set_width(str, specifier);
 	ft_putstr_fd(str, 1);
