@@ -6,7 +6,7 @@
 /*   By: asimoes <asimoes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 07:41:21 by asimoes           #+#    #+#             */
-/*   Updated: 2020/08/03 13:05:01 by asimoes          ###   ########.fr       */
+/*   Updated: 2020/08/11 20:40:42 by asimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static char		*number_zero(void)
 	return (str);
 }
 
-char			*get_hex_str(unsigned int number, short int capitalize)
+static char		*get_hex_str(unsigned int number, short int capitalize)
 {
 	char			*str;
 	char			*old_str;
