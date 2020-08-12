@@ -6,7 +6,7 @@
 #    By: asimoes <asimoes@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/03 11:31:41 by asimoes           #+#    #+#              #
-#    Updated: 2020/08/12 15:56:34 by asimoes          ###   ########.fr        #
+#    Updated: 2020/08/12 16:02:09 by asimoes          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ $(NAME):
 				$(MAKE) -C libft
 				$(CC) -c $(CFLAGS) $(SRCS)
 				ar rcs $(NAME) $(OBJ)
-				ar rcs $(NAME) libft/libft.a
+				ar rcs $(NAME) $(NAME) libft/libft.a
 
 all:			$(NAME)
 
