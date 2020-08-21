@@ -6,7 +6,7 @@
 #    By: asimoes <asimoes@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/03 11:31:41 by asimoes           #+#    #+#              #
-#    Updated: 2020/08/21 11:02:28 by asimoes          ###   ########.fr        #
+#    Updated: 2020/08/21 11:03:24 by asimoes          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ CC		=	gcc
 CFLAGS	=	-Wall -Werror -Wextra
 NAME	=	libftprintf.a
 ALL_OBJ	=	$(OBJ)
-ALL_OBJ+=	$(ar -t libft/libft.a | grep .o)
+ALL_OBJ+=	$(eval $(ar -t libft/libft.a | grep .o))
 
 $(NAME):
 				$(MAKE) -C libft
