@@ -6,7 +6,7 @@
 #    By: asimoes <asimoes@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/03 11:31:41 by asimoes           #+#    #+#              #
-#    Updated: 2020/08/21 10:40:49 by asimoes          ###   ########.fr        #
+#    Updated: 2020/08/21 10:43:23 by asimoes          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ CFLAGS	=	-Wall -Werror -Wextra
 NAME	=	libftprintf.a
 
 $(NAME):
-				$(MAKE) -C libft
+				$(MAKE) -C libft/
 				$(CC) -c $(CFLAGS) $(SRCS)
 				ar rcs $(NAME) $(OBJ) $(eval ar libft/libft.a | grep ".o")
 
