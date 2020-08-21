@@ -6,7 +6,7 @@
 #    By: asimoes <asimoes@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/03 11:31:41 by asimoes           #+#    #+#              #
-#    Updated: 2020/08/21 11:09:01 by asimoes          ###   ########.fr        #
+#    Updated: 2020/08/21 11:12:26 by asimoes          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ NAME	=	libftprintf.a
 $(NAME):
 				$(MAKE) -C libft
 				$(CC) -c $(CFLAGS) $(SRCS)
-				ar rcs $(NAME) $(OBJ) $(shell ar -t libft/libft.a | grep .o)
+				ar rcs $(NAME) $(OBJ) libft/*.o
 
 all:			$(NAME)
 
