@@ -6,7 +6,7 @@
 #    By: asimoes <asimoes@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/03 11:31:41 by asimoes           #+#    #+#              #
-#    Updated: 2020/08/21 10:29:59 by asimoes          ###   ########.fr        #
+#    Updated: 2020/08/21 10:31:25 by asimoes          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,4 +31,4 @@ clean:
 fclean:		clean
 			rm -rf $(NAME)
 
-re:				fclean all
+re:			fclean all
