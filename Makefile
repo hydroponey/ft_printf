@@ -6,7 +6,7 @@
 #    By: asimoes <asimoes@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/03 11:31:41 by asimoes           #+#    #+#              #
-#    Updated: 2020/08/21 11:08:12 by asimoes          ###   ########.fr        #
+#    Updated: 2020/08/21 11:09:01 by asimoes          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,13 +16,11 @@ OBJ		=	$(SRCS:.c=.o)
 CC		=	gcc
 CFLAGS	=	-Wall -Werror -Wextra
 NAME	=	libftprintf.a
-ALL_OBJ	=	$(OBJ)
-ALL_OBJ+=	$(shell ar -t libft/libft.a | grep .o)
 
 $(NAME):
 				$(MAKE) -C libft
 				$(CC) -c $(CFLAGS) $(SRCS)
-				ar rcs $(NAME) $(ALL_OBJ)
+				ar rcs $(NAME) $(OBJ) $(shell ar -t libft/libft.a | grep .o)
 
 all:			$(NAME)
 
