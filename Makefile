@@ -6,7 +6,7 @@
 #    By: asimoes <asimoes@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/03 11:31:41 by asimoes           #+#    #+#              #
-#    Updated: 2020/08/21 11:02:08 by asimoes          ###   ########.fr        #
+#    Updated: 2020/08/21 11:02:28 by asimoes          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ ALL_OBJ+=	$(ar -t libft/libft.a | grep .o)
 $(NAME):
 				$(MAKE) -C libft
 				$(CC) -c $(CFLAGS) $(SRCS)
-				ar rcs $(NAME) $(OBJ) $(ar -t libft/libft.a | grep ".o")
+				ar rcs $(NAME) $(ALL_OBJ)
 
 all:			$(NAME)
 
